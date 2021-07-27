@@ -3,8 +3,12 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
-.properties
-.yml
+
+### Setting Files ###
+application.properties
+*.properties
+application.yml
+*.yml
 
 macOS
 .DS_Store

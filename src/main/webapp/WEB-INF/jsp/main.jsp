@@ -2,15 +2,17 @@
 <%@ include file="Fragment/Taglib.jsp" %>
 <!DOCTYPE html>
 <html>
+<c:set var="test01" value="This is test01" />
+
 <head>
 <meta charset="UTF-8">
-<title>JSP TEST01</title>
+<title>${test01}</title>
 </head>
 <body>
-<c:set var="test01" value="This is test01" />
-</body>
+<%@ include file="Fragment/TopNav/topNav.jsp" %>
 <h1>
-TEST01
+MAIN
 </h1>
 <p>${test01}</p>
+</body>
 </html>
