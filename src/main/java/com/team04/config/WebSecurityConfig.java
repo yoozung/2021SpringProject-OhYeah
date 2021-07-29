@@ -1,8 +1,5 @@
 package com.team04.config;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -17,33 +14,55 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
+	// @formatter:off
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
-			.cors().and().csrf().disable().authorizeRequests()
-//			경로 "/"에 대한 모든 요청 허가
-			.antMatchers("/").permitAll()
-//			"/signInMethod" 에 대해 로그인 요구
-//			.antMatchers("/signInMethod").authenticated()
-			.and()
+			.cors().and().csrf().disable().authorizeRequests().and()
+				.authorizeRequests((authorize) -> authorize
+					.antMatchers("/css/**", "/index").permitAll()
+					.antMatchers("/user/**").hasRole("USER")
+				)
+				.formLogin((formLogin) -> formLogin
+					.loginPage("/signInPage")
+					.failureUrl("/")
+				);
+	}
+	
+	// @formatter:on
+	@Bean
+	public UserDetailsService userDetailsService() {
+		UserDetails userDetails = User.withDefaultPasswordEncoder()
+				.username("user")
+				.password("password")
+				.roles("USER")
+				.build();
+		return new InMemoryUserDetailsManager(userDetails);
+	}
+	
+//	@Override
+//	protected void configure(HttpSecurity http) throws Exception {
+//		http
+////			.cors().and().csrf().disable().authorizeRequests()
+////			.and()
+//			.authorizeRequests((authorize) -> authorize
+//					.antMatchers("/css/**", "/").permitAll()
+//					.antMatchers("/user/**").hasRole("USER")
+//			)
 //			.formLogin()
 //				.loginPage("/signInPage")
-//				.permitAll()
-//			.and()
-			.logout()
-				.permitAll();
-	}
-
-	
-//	@Bean
-//	@Override
-//	public UserDetailsService userDetailsService() {
-//		UserDetails user = User.withDefaultPasswordEncoder()
-//					.username("user")
-//					.password("1234")
-//					.roles("USER")
-//					.build();
-//		
-//			return new InMemoryUserDetailsManager(user);
+//				.failureUrl("/signInError");
 //	}
+//	
+//	
+//	@Bean
+//	public UserDetailsService userDetailsService() {
+//		UserDetails user1 = User.withDefaultPasswordEncoder()
+//				.username("user")
+//				.password("1234")
+//				.roles("USER")
+//				.build();
+//		return new InMemoryUserDetailsManager(user1);
+//	}
+	
 }
