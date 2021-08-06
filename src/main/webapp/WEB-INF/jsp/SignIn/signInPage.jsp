@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="../Fragment/Taglib.jsp" %>
+<%@ include file="../Fragment/TagLib/Taglib.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +8,7 @@
 </head>
 <body>
 <%@ include file="../Fragment/TopNav/topNav.jsp" %>
-<form action="/signInMethod" method="POST">
+<form action="/signInPage" method="POST">
 <label for="signAccount">아이디</label>
 <input type="text" name="signAccount" value=""/>
 <br/>

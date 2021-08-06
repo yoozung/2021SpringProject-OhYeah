@@ -7,9 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class MainController {
 	
 	@GetMapping("/")
-	public String callMain() {
-		System.out.println("Called main.jsp page...");
-		return "/main";
-	}	
-	
+	public String main() {
+		return "main";
+	}
 }
