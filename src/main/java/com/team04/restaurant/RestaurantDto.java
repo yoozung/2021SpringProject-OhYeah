@@ -1,5 +1,7 @@
 package com.team04.restaurant;
 
+import java.util.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,6 +23,6 @@ public class RestaurantDto {
 	private String category1;
 	private String category2;
 	private int shopSeat;
-	private String registerDate;
+	private Date registerDate;
 	
 }
