@@ -19,4 +19,6 @@ public class MemberDto {
 	@Setter
 	private String password;
 	private String entryDate;
+	private String role;
+	private int enabled;
 }

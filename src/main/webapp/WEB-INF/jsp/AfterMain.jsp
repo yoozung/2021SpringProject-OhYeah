@@ -8,16 +8,17 @@
 <meta charset="UTF-8">
 <link type="text/css" rel="stylesheet" href="/resource/css/inc.css">
 
-<title>MAIN</title>
+<title>After Main</title>
 </head>
 <body>
 <%@ include file="Fragment/inc/topBefore.jsp" %>
+<h1>After MAIN</h1>
 <c:choose>
 	<c:when test="${empty userName}">
-		<h1>WELCOME <c:out value="Guest"/> !!</h1>
+		<h3>WELCOME <c:out value="Guest"/> !!</h3>
 	</c:when>
 	<c:when test="${not empty userName}">
-		<h1>WELCOME <c:out value="${userName}"/> !!</h1>
+		<h3>WELCOME <c:out value="${userName}"/> !!</h3>
 	</c:when>
 </c:choose>
 </body>
