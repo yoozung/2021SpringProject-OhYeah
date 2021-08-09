@@ -7,10 +7,12 @@
 
 <head>
 <meta charset="UTF-8">
+<link type="text/css" rel="stylesheet" href="/resource/css/inc.css">
+
 <title>${test01}</title>
 </head>
 <body>
-<%@ include file="Fragment/TopNav/topNav.jsp" %>
+<%@ include file="Fragment/inc/topBefore.jsp" %>
 <h1>
 MAIN
 </h1>
