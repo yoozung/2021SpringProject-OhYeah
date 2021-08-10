@@ -21,17 +21,9 @@ public class MemberController {
 	
 	@GetMapping("/signInPage")
 	public String callSignInPage() {
-		return "/SignIn/signInPage";
-	}
+		return "/SignIn/signInPage";	}
 	
-	@PostMapping("/signInPage/SignIn")
-	public MemberDto callSignInMethod(			
-			@RequestParam(value="username") String username,
-			@RequestParam(value="passowrd") String password
-			) {
-		return ms.signIn(username, password); 
-	}
-	
+		
 	@GetMapping("/findByName")
 	@ResponseBody
 	public String test01() throws Exception {

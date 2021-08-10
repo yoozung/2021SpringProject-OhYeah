@@ -1,6 +1,7 @@
 package com.team04.member;
 
 import lombok.AllArgsConstructor;
+import lombok.Generated;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,6 +12,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString(exclude= {"password"})
 public class MemberDto {
+		
 	private String name;
 	@Setter
 	private String mobile;
@@ -21,4 +23,5 @@ public class MemberDto {
 	private String entryDate;
 	private String role;
 	private int enabled;
+
 }

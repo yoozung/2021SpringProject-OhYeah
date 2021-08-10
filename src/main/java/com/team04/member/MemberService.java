@@ -24,6 +24,11 @@ public class MemberService implements MemberDao {
 	}
 	
 	@Override
+	public MemberDto findByEmail(String email) {
+		return memberDao.findByEmail(email);
+	}
+	
+	@Override
 	public MemberDto test02(String username) {
 		return memberDao.test02(username);
 	}

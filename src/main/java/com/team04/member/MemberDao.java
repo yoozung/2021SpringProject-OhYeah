@@ -14,5 +14,8 @@ public interface MemberDao {
 	
 	@Select("SELECT * FROM member WHERE name=#{username}")
 	public MemberDto test02(String username);
+
+	@Select("SELECT * FROM member WHERE email=#{email}")
+	public MemberDto findByEmail(String email);
 	
 }
