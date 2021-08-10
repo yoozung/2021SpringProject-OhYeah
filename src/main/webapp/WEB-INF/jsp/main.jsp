@@ -29,6 +29,7 @@
 		<h1>WELCOME <c:out value="${userName}"/> !!</h1>
 	</c:when>
 </c:choose>
+<%@ include file="Fragment/inc/sideMypage_e.jsp" %>
 <%@ include file="Fragment/inc/footer.jsp"%>
 </body>
 </html>
