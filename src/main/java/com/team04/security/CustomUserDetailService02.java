@@ -1,6 +1,10 @@
 package com.team04.security;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -26,15 +30,27 @@ public class CustomUserDetailService02 implements UserDetailsService {
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		MemberDto member = ms.findByEmail(username);
 		
-		if(member.equals(null)) {
-			throw new UsernameNotFoundException(username);
-		} else {
-			UserDetails user = User.withDefaultPasswordEncoder()
-				.username(member.getName())
-				.password(member.getPassword())
-				.roles(member.getRole())
-				.build();				
-			return user;
+		if(!member.equals(null)) {
+			List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+			authorities.add(new SimpleGrantedAuthority(member.getRole()));
+			
+			return new User(
+					member.getName(),
+					member.getPassword(),
+					authorities
+			);
 		}
+		return null;
+		
+//		if(member.equals(null)) {
+//			throw new UsernameNotFoundException(username);
+//		} else {
+//			UserDetails user = User.withDefaultPasswordEncoder()
+//				.username(member.getName())
+//				.password(member.getPassword())
+//				.roles(member.getRole())
+//				.build();				
+//			return user;
+//		}
 	}
 }

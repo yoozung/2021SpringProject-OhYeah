@@ -19,7 +19,7 @@ public class MySignSuccessHandler implements AuthenticationSuccessHandler {
 		session.setAttribute("userName", authentication.getName());
 //		session.setAttribute("password", authentication.getDetails()); // 사용자의 RemoteIpAddress와 SessionId를 제공
 //		session.setAttribute("password", authentication.getPrincipal()); // Username, password, Enabled, AccountNonExpired, credentialsNonExpired, AccountNonLocked, Granted Authorities 값을 제공
-		response.sendRedirect("/main");
+		response.sendRedirect("/");
 
 	}
 
