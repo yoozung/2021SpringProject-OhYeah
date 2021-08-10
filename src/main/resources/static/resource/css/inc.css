@@ -16,6 +16,11 @@ a {
 	margin-top: 3.5rem;
 }
 
+.carousel-item img {
+	height: 400px!important;
+
+}
+
 /*-----------------------top---------------------------*/
 
 .topMenu img {
