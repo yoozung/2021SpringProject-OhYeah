@@ -20,8 +20,13 @@
 </head>
 <body>
 <%@ include file="Fragment/inc/topBefore.jsp" %>
+<!-- 카루셀은 메인페이지에서만 띄울 예정. 다른 페이지에서는 빼주세요 -->
 <%@ include file="Fragment/inc/carousel.jsp" %>
-<c:choose>
+
+
+		<div class="col-9">
+			내용은 여기에 작성
+			<c:choose>
 	<c:when test="${empty userName}">
 		<h1>WELCOME <c:out value="Guest"/> !!</h1>
 	</c:when>
@@ -30,6 +35,8 @@
 		<h3>Credential: <c:out value="${password}"/></h3>
 	</c:when>
 </c:choose>
+		</div>
+
 <%@ include file="Fragment/inc/footer.jsp"%>
 </body>
 </html>
