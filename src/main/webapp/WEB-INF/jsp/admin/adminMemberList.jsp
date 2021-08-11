@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="Fragment/TagLib/Taglib.jsp" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ include file="../Fragment/TagLib/Taglib.jsp" %>
 <!DOCTYPE html>
 <html>
-<c:set var="userName" value="${userName}"/>
-<c:set var="password" value="${password}"/>
 <head>
 <meta charset="UTF-8">
+<title>관리자 | 회원조회</title>
 <!-- bootstrap -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -16,26 +16,40 @@
 <!-- end bootstrap -->
 <link type="text/css" rel="stylesheet" href="/resource/css/inc.css">
 
-<title>MAIN</title>
 </head>
 <body>
-<%@ include file="Fragment/inc/topBefore.jsp" %>
-<!-- 카루셀은 메인페이지에서만 띄울 예정. 다른 페이지에서는 빼주세요 -->
-<%@ include file="Fragment/inc/carousel.jsp" %>
+<%@ include file="../Fragment/inc/topBefore.jsp" %>
 
-		<div class="col-9">
-			내용은 여기에 작성
-			<c:choose>
-	<c:when test="${empty userName}">
-		<h1>WELCOME <c:out value="Guest"/> !!</h1>
-	</c:when>
-	<c:when test="${not empty userName}">
-		<h1>WELCOME <c:out value="${userName}"/> !!</h1>
-		<h3>Credential: <c:out value="${password}"/></h3>
-	</c:when>
-</c:choose>
-		</div>
-
-<%@ include file="Fragment/inc/footer.jsp"%>
+<h3>전체회원조회</h3>
+<table>
+	<tr>
+		<th>번호</th>
+		<th>이름</th>
+		<th>이메일</th>
+		<th>비밀번호</th>
+		<th>휴대폰</th>
+		<th>가입일</th>
+	</tr>
+	
+	<!-- 검색조건에 해당하는 결과가 없는 경우 메세지 출력 -->
+	<c:if test="${not empty message}">
+		<tr>
+			<th colspan=10>${message}</th>
+		</tr>
+	</c:if>
+	
+	<c:forEach var="dto" items="${list}" varStatus="status">
+		<tr>
+			<th>${status.count}</th>
+			<th>${dto.name}</th>
+			<th>${dto.email}</th>
+			<th>${fn:substring(dto.password, 0, 2)}<c:forEach begin="2" end="${fn:length(dto.password)}" step="1">*</c:forEach> 
+			</th>
+			<th>${dto.mobile}</th>
+			<th>${dto.entryDate}</th>
+		</tr>
+	</c:forEach>
+</table>
+<%@ include file="../Fragment/inc/footer.jsp"%>
 </body>
 </html>
