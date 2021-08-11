@@ -20,7 +20,7 @@
 		<c:when test="${not empty userName}">
 		<div class="col-9">
 			<div class="topSide">
-				<a href="/">마이페이지</a> <a href="/">로그아웃</a>
+				<a href="/">마이페이지</a> <a href="/logout">로그아웃</a>
 			</div>
 		</div>
 		</c:when>

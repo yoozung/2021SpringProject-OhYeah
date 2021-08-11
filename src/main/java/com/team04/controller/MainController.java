@@ -22,7 +22,7 @@ public class MainController {
 	@GetMapping({"/main"})
 	public String main2(HttpServletRequest req, HttpServletResponse res, HttpSession session) {
 		log.info(">>> " +  session.getId() + " " + "Called main()...");
-		session.setAttribute("userName", req.getRemoteUser());
+//		session.setAttribute("userName", req.getRemoteUser());
 		return "main";
 	}
 	

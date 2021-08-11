@@ -1,11 +1,18 @@
 package com.team04.member;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
+import com.team04.controller.MemberController;
+
+import lombok.extern.slf4j.Slf4j;
+
 @Service
 @Repository
+@Slf4j
 public class MemberService implements MemberDao {
 
 	@Autowired
@@ -24,8 +31,21 @@ public class MemberService implements MemberDao {
 	}
 	
 	@Override
+	public MemberDto findByEmail(String email) {
+		return memberDao.findByEmail(email);
+	}
+	
+	@Override
 	public MemberDto test02(String username) {
 		return memberDao.test02(username);
 	}
+
+	@Override
+	public List<MemberDto> selectMemberList() {
+		log.debug("#### 서비스테스트");
+		return memberDao.selectMemberList();
+	}
+
+
 
 }

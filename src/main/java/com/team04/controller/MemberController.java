@@ -1,10 +1,15 @@
 package com.team04.controller;
 
+import java.util.List;
+
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.team04.member.MemberDto;
@@ -21,17 +26,9 @@ public class MemberController {
 	
 	@GetMapping("/signInPage")
 	public String callSignInPage() {
-		return "/SignIn/signInPage";
-	}
+		return "/SignIn/signInPage";	}
 	
-	@PostMapping("/signInPage/SignIn")
-	public MemberDto callSignInMethod(			
-			@RequestParam(value="username") String username,
-			@RequestParam(value="passowrd") String password
-			) {
-		return ms.signIn(username, password); 
-	}
-	
+		
 	@GetMapping("/findByName")
 	@ResponseBody
 	public String test01() throws Exception {
@@ -48,4 +45,17 @@ public class MemberController {
 		return answer.toString();
 	}
 	
+	@RequestMapping("/admin/adminMemberList")
+	public String adminMemberList(Model model) {
+		List<MemberDto> list = ms.selectMemberList();
+		log.debug("#### 컨트롤러테스트");
+		model.addAttribute("list", list);
+		log.debug("#### 컨트롤러리턴테스트");
+		return "admin/adminMemberList";
+	}
+	
+	@RequestMapping("/admin/adminShopAccept")
+	public String adminShopAccept() {
+		return "admin/adminShopAccept";
+	}
 }
