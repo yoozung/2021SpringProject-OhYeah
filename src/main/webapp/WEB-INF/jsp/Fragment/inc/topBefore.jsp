@@ -26,4 +26,10 @@
 		</c:when>
 		</c:choose>
 	</div>
+	<div>
+		<div class="topSide">
+			<a href="/test1111">(임시) 식당지도</a>
+			<a href="/admin/adminMemberList">(임시) 전체 회원목록</a>
+		</div>
+	</div>
 </div>
