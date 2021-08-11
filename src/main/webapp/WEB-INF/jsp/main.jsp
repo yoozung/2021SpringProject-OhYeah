@@ -32,7 +32,7 @@
 	</c:when>
 	<c:when test="${not empty userName}">
 		<h1>WELCOME <c:out value="${userName}"/> !!</h1>
-		<h3>Credential: <c:out value="${password}"/></h3>
+		<h3>Credential: <c:out value="${authorities}"/></h3>
 	</c:when>
 </c:choose>
 		</div>

@@ -26,12 +26,4 @@ public class MainController {
 		return "main";
 	}
 	
-	@GetMapping("/afterMain")
-	public String afterMain(HttpServletRequest req, HttpServletResponse res, HttpSession session) {
-		log.info(">>> Called afterMain()...");
-		session.setAttribute("userName", req.getRemoteUser());
-		log.debug(">>>userName: " + req.getRemoteUser());
-		return "AfterMain";
-	}
-	
 }
