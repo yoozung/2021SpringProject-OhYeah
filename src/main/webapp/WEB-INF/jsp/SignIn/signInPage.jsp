@@ -8,12 +8,12 @@
 </head>
 <body>
 <%@ include file="../Fragment/TopNav/topNav.jsp" %>
-<form action="/signInPage" method="POST">
+<form action="/signInPage" method="post">
 <label for="signAccount">아이디</label>
-<input type="text" name="signAccount" value=""/>
+<input type="text" name="username" value=""/>
 <br/>
 <label for="signPassword">비밀번호</label>
-<input type="password" name="signPassword" value="" />
+<input type="password" name="password" value="" />
 <br/>
 <input type="submit" name="signInSubmit" value="로그인" />
 </form>
