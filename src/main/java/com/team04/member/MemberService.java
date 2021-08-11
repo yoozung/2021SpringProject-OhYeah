@@ -6,8 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
+import com.team04.member02.MemberDto02;
+
+import lombok.extern.slf4j.Slf4j;
+
 @Service
 @Repository
+@Slf4j
 public class MemberService implements MemberDao {
 
 	@Autowired
@@ -39,5 +44,13 @@ public class MemberService implements MemberDao {
 	public MemberDto test02(String username) {
 		return memberDao.test02(username);
 	}
+
+	@Override
+	public List<MemberDto02> selectMemberList() {
+		log.debug("#### 서비스테스트");
+		return memberDao.selectMemberList();
+	}
+
+
 
 }

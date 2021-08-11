@@ -1,8 +1,12 @@
 package com.team04.member;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+
+import com.team04.member02.MemberDto02;
 
 @Mapper
 public interface MemberDao {
@@ -20,5 +24,8 @@ public interface MemberDao {
 
 	@Select("SELECT * FROM member WHERE email=#{email}")
 	public MemberDto findByEmail(String email);
+	
+	/** 전체회원조회 */
+	public List<MemberDto02> selectMemberList();
 	
 }

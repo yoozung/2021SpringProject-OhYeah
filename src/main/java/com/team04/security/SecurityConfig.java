@@ -26,7 +26,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 //				.ignoringAntMatchers("/signInPage/SignIn").and()
 			
 			.authorizeRequests()
-				.antMatchers("/", "/resource/**", "/signUpPage", "/findByName", "/test02").permitAll()
+				.antMatchers("/", "/resource/**", "/signUpPage", "/findByName", "/test02", "/admin/**").permitAll()
 				.anyRequest().authenticated()
 				.and()
 			.formLogin()
