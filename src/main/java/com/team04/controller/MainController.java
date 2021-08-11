@@ -25,5 +25,17 @@ public class MainController {
 //		session.setAttribute("userName", req.getRemoteUser());
 		return "main";
 	}
+	@GetMapping("/afterMain")
+	public String afterMain(HttpServletRequest req, HttpServletResponse res, HttpSession session) {
+		log.info(">>> Called afterMain()...");
+		session.setAttribute("userName", req.getRemoteUser());
+		log.debug(">>>userName: " + req.getRemoteUser());
+		return "AfterMain";
+	}
+	
+	@GetMapping("/test1111")
+	public String testpage2() {
+		return "/maptest";
+	}
 	
 }

@@ -26,8 +26,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 //				.ignoringAntMatchers("/signInPage/SignIn").and()
 			
 			.authorizeRequests()
-				.antMatchers("/", "/resource/**", "/signUpPage", "/findByName", "/test02", "/admin/**").permitAll()
-				.anyRequest().authenticated()
+//				.antMatchers("/", "/resource/**", "/signUpPage", "/findByName", "/test111", "/admin/**").permitAll()
+				.anyRequest().permitAll()
 				.and()
 			.formLogin()
 				.loginPage("/signInPage")
@@ -36,32 +36,38 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 				.passwordParameter("password") // Form Parameter Catch
 				.successHandler(new MySignSuccessHandler())
 				.failureUrl("/signInPage?error")
-				.permitAll()				
+				.permitAll()
 				.and()
-			.httpBasic()
-				.and()
+			.oauth2Login()
+				.defaultSuccessUrl("/")
+				.successHandler(new MySignSuccessHandler())
+			.and()
+//			.httpBasic()
+//				.and()
 			.logout()
+				.clearAuthentication(true)
+				.invalidateHttpSession(true)
 				.logoutSuccessUrl("/")
 				.permitAll();
 	}
 	
-	@Bean
-	@Override
-	public UserDetailsService userDetailsService() {		
-		UserDetails user =  User.withDefaultPasswordEncoder()
-				.username("PMJ")
-				.password("1234")
-				.roles("USER")
-				.build();
-		
-		UserDetails admin = User.withDefaultPasswordEncoder()
-		        .username("admin")
-		        .password("1234")
-		        .roles("USER", "ADMIN")
-		        .build();
-	
-		return new InMemoryUserDetailsManager(user, admin);
-	}
+//	@Bean
+//	@Override
+//	public UserDetailsService userDetailsService() {		
+//		UserDetails user =  User.withDefaultPasswordEncoder()
+//				.username("PMJ")
+//				.password("1234")
+//				.roles("USER")
+//				.build();
+//		
+//		UserDetails admin = User.withDefaultPasswordEncoder()
+//		        .username("admin")
+//		        .password("1234")
+//		        .roles("USER", "ADMIN")
+//		        .build();
+//	
+//		return new InMemoryUserDetailsManager(user, admin);
+//	}
 	
 //	@Bean
 //	public PasswordEncoder passwordEncoder() {

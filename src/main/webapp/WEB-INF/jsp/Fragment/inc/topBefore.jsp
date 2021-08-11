@@ -13,7 +13,7 @@
 		<c:when test="${empty userName}">
 		<div class="col-9">
 			<div class="topSide">
-				<a href="/signUpPage">회원가입</a> <a href="/signInPage">로그인</a>
+				<a href="/signUpPage">회원가입</a> <a href="/signInPage">로그인</a> <a href="/oauth2/authorization/google">구글 로그인</a>
 			</div>
 		</div>
 		</c:when>
