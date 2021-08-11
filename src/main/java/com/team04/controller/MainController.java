@@ -33,7 +33,7 @@ public class MainController {
 		return "AfterMain";
 	}
 	
-	@GetMapping("/test1111")
+	@GetMapping("/test1115")
 	public String testpage2() {
 		return "/maptest";
 	}

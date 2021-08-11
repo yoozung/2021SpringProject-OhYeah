@@ -2,8 +2,8 @@
 <%@ include file="Fragment/TagLib/Taglib.jsp" %>
 <!DOCTYPE html>
 <html>
-<c:set var="userName" value="${userName}"/>
-<c:set var="password" value="${password}"/>
+<c:set var="userName" value="${member.getName()}"/>
+<c:set var="authorities" value="${member.getRole()}"/>
 <head>
 <meta charset="UTF-8">
 <!-- bootstrap -->
