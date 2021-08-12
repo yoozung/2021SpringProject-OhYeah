@@ -43,99 +43,54 @@ var marker = new naver.maps.Marker({
 });
 
 
-//혼잡도 : 3
-var redmarker = new naver.maps.Marker({
-	  position: new naver.maps.LatLng(37.5231227, 127.1069538),
-	  map: map,
-	  title: '혼잡',
-	  icon: {
-	      content: [
-	                  '<div style="padding-top:5px;padding-bottom:5px;padding-left:5px;padding-right:5px;background-color:#b12121; color:white; text-align:center;border:1px solid #831616; border-radius:14px; opacity:75%" onmouseover="javascript:overStore(\'store3\');" onmouseout="javascript:outStore(\'store3\');">' +
-	                      '<div style="font-weight: bold; font-size:14px"> 식당1 </div>' +
-	                      '<div id="store3" style="font-weight: normal; font-size:13px; margin-top:3px; display:none"> 매드포갈릭<br/>02-222-1111<br/>양식</div>' +
-	                      '</div>'
-	              ].join(''),
-	      size: new naver.maps.Size(38, 58),
-	      anchor: new naver.maps.Point(19, 58),
-	  },
-	  draggable: false
-});
-
-
-//혼잡도 : 3
-var redmarker = new naver.maps.Marker({
-	  position: new naver.maps.LatLng(37.5310868, 127.0879853),
-	  map: map,
-	  title: '혼잡',
-	  icon: {
-	      content: [
-	                  '<div style="padding-top:5px;padding-bottom:5px;padding-left:5px;padding-right:5px;background-color:#b12121; color:white; text-align:center;border:1px solid #831616; border-radius:14px; opacity:75%">' +
-	                      '<div style="font-weight: bold; font-size:14px"> 식당4 </div>' +
-	                      '<div style="font-weight: normal; font-size:13px; margin-top:3px"> 만다린<br/>02-222-4444<br/>중식</div>' +
-	                      '</div>'
-	              ].join(''),
-	      size: new naver.maps.Size(38, 58),
-	      anchor: new naver.maps.Point(19, 58),
-	  },
-	  draggable: false
-});
-
-
-//혼잡도 : 2
-
-var yellowmarker = new naver.maps.Marker({
-  position: new naver.maps.LatLng(37.5332648, 127.0930493),
-  map: map,
-	title: '보통',
-	icon: {
-      content: [
-                  '<div style="padding-top:5px;padding-bottom:5px;padding-left:5px;padding-right:5px;background-color:#d3cc07; color:white; text-align:center;border:1px solid #a09b07; border-radius:14px; opacity:75%">' +
-                      '<div style="font-weight: bold; font-size:14px"> 식당2 </div>' +
-                      '<div style="font-weight: normal; font-size:13px; margin-top:3px"> 스시효<br/>02-222-2222<br/>일식</div>' +
-                      '</div>'
-              ].join(''),
-      size: new naver.maps.Size(38, 58),
-      anchor: new naver.maps.Point(19, 58),
+function CustomMarker(lat, lng, storeId, storeNum, storeName, state, storePhone, storeType) {
+	//심각성 : 1
+	var contents_html = "";
+	
+	//상태 : 혼잡 (빨강)
+	if(state == 3)
+	{
+		contents_html =	'<div style="padding-top:5px;padding-bottom:5px;padding-left:5px;padding-right:5px;background-color:#b12121; color:white; text-align:center;border:1px solid #831616; border-radius:14px; opacity:75%" onmouseover="javascript:overStore(\''+storeId+'\');" onmouseout="javascript:outStore(\''+storeId+'\');">' +
+        '<div style="font-weight: bold; font-size:14px"> '+storeNum+' </div>' +
+        '<div style="font-weight: normal; font-size:13px; margin-top:3px; display:none" id="'+storeId+'"> '+storeName+'<br/>'+storePhone+'<br/>'+storeType+'</div>' + '<div><input type="submit" value="대기"></div>'+
+        '</div>';	
 	}
-});
-
-
-//혼잡도 : 1
-
-var greenmarker = new naver.maps.Marker({
-  position: new naver.maps.LatLng(37.5270708, 127.0872128),
-  map: map,
-	title: '원활',
-	icon: {
-      content: [
-                  '<div style="padding-top:5px;padding-bottom:5px;padding-left:5px;padding-right:5px;background-color:#43f707; color:white; text-align:center;border:1px solid #3a8c1f; border-radius:14px; opacity:75%">' +
-                      '<div style="font-weight: bold; font-size:14px"> 식당3 </div>' +
-                      '<div style="font-weight: normal; font-size:13px; margin-top:3px"> 진상샤브샤브<br/>02-222-3333<br/>한식</div>' +
-                      '</div>'
-              ].join(''),
-      size: new naver.maps.Size(38, 58),
-      anchor: new naver.maps.Point(19, 58),
+	
+	// 상태 : 보통 (노랑)
+	if(state == 2)
+	{
+		contents_html =	'<div style="padding-top:5px;padding-bottom:5px;padding-left:5px;padding-right:5px;background-color:#d3cc07; color:white; text-align:center;border:1px solid #a09b07; border-radius:14px; opacity:75%" onmouseover="javascript:overStore(\''+storeId+'\');" onmouseout="javascript:outStore(\''+storeId+'\');">' +
+        '<div style="font-weight: bold; font-size:14px"> '+storeNum+' </div>' +
+        '<div style="font-weight: normal; font-size:13px; margin-top:3px; display:none" id="'+storeId+'"> '+storeName+'<br/>'+storePhone+'<br/>'+storeType+'</div>' + '<div><input type="submit" value="대기"></div>'+
+        '</div>';	
 	}
-});
-
-
-//혼잡도 : 1
-
-var greenmarker = new naver.maps.Marker({
-  position: new naver.maps.LatLng(37.5156721, 127.0937066),
-  map: map,
-	title: '원활',
-	icon: {
-      content: [
-                  '<div style="padding-top:5px;padding-bottom:5px;padding-left:5px;padding-right:5px;background-color:#43f707; color:white; text-align:center;border:1px solid #3a8c1f; border-radius:14px; opacity:75%">' +
-                      '<div style="font-weight: bold; font-size:14px"> 식당5 </div>' +
-                      '<div style="font-weight: normal; font-size:13px; margin-top:3px"> 참설농탕<br/>02-222-5555<br/>한식</div>' +
-                      '</div>'
-              ].join(''),
-      size: new naver.maps.Size(38, 58),
-      anchor: new naver.maps.Point(19, 58),
+	
+	// 상태 : 원활 (초록)
+	if(state == 1)
+	{
+		contents_html =	'<div style="padding-top:5px;padding-bottom:5px;padding-left:5px;padding-right:5px;background-color:#43f707; color:white; text-align:center;border:1px solid #3a8c1f; border-radius:14px; opacity:75%" onmouseover="javascript:overStore(\''+storeId+'\');" onmouseout="javascript:outStore(\''+storeId+'\');">' +
+        '<div style="font-weight: bold; font-size:14px"> '+storeNum+' </div>' +
+        '<div style="font-weight: normal; font-size:13px; margin-top:3px; display:none" id="'+storeId+'"> '+storeName+'<br/>'+storePhone+'<br/>'+storeType+'</div>' + '<div><input type="submit" value="대기"></div>'+
+        '</div>';	
 	}
-});
+	
+	var marker = new naver.maps.Marker({
+		position: new naver.maps.LatLng(lat, lng),
+		map: map,
+		title: storeNum,
+		icon: {
+			content: contents_html,
+			size: new naver.maps.Size(38, 58),
+			anchor: new naver.maps.Point(19, 58),
+		},
+		draggable: false
+	});
+	return marker;
+};
+//var marker = new CustomMarker(lat, lng, storeId, storeNum, storeName, state, storePhone, storeType)
+var marker = new CustomMarker(37.5231227, 127.1069538, "store1", "식당1", "매드포갈릭", 3, "02-222-1111", "양식");
+var marker2 = new CustomMarker(37.5310868, 127.0879853, "store2", "식당2", "만다린", 2, "02-222-2222", "중식");
+var marker3 = new CustomMarker(37.5332648, 127.0930493, "store3", "식당3", "스시효", 1, "02-222-3333", "일식");
 
 
 function overStore(childID)
@@ -147,7 +102,6 @@ function outStore(childID)
 {
 	$("#"+childID).hide();
 }
-
 
 naver.maps.Event.once(map, 'init_stylemap', function(){
 	var customCtrl = new naver.maps.CustomControl(curtBtn,{
