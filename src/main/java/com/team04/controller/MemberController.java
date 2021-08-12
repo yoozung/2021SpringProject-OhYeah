@@ -1,6 +1,14 @@
 package com.team04.controller;
 
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.team04.member.MemberDto;
 import com.team04.member.MemberService;
 import com.team04.member02.MemberDto02;
 import com.team04.member.MemberDto;
@@ -21,31 +30,66 @@ import lombok.extern.slf4j.Slf4j;
 public class MemberController {
 	@Autowired
 	private MemberService memberService;
+		
+	@GetMapping("/signUpPage")
+	public String callSignUpPage() {
+		return "/SignIn/signUpPage";
+	}	
+	@PostMapping("/signUpPage/SignUp")
+	public void signUpMethod(@RequestParam("name") String name, @RequestParam("mobile") String mobile,
+			@RequestParam("email") String email, @RequestParam("password") String password,
+			HttpServletResponse res) throws IOException {
+		
+		LocalDateTime currentDateTime = LocalDateTime.now(ZoneId.of("Asia/Seoul"));
+		DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE_TIME;
+		String time = currentDateTime.format(formatter);
+		String role ="ROLE_USER";
+		int enabled = 1;
+		
+		if(memberService.signUp(name, mobile, email, password, time, role, enabled) == 1) {
+			log.debug(">>>> SignUp Complete");
+			res.sendRedirect("/main");
+//			return "/main";
+		} else {
+			log.debug(">>>> SignUp Failed");
+			res.sendRedirect("/signUpPage");
+//			return "/signUpPage";
+		}		
+	}
 	
 	@GetMapping("/signInPage")
 	public String callSignInPage() {
 		return "/SignIn/signInPage";
 	}
-	
-	@GetMapping("/signUpPage")
-	public String callSignUpPage() {
-		return "/SignIn/signUpPage";
+	@PostMapping("/signInPage/SignIn")
+	public void singInMethod(@RequestParam("account")String account, @RequestParam("password")String password,
+			HttpServletRequest req, HttpServletResponse res, HttpSession session) throws IOException {
+		MemberDto member = memberService.signIn(account, password);
+		if(!member.equals(null)) {
+			session.setAttribute("member", member);
+			res.sendRedirect("/main");
+			log.debug(">>>> SignIn Complete : " + session);
+//			return "/main";
+		} else {			
+			log.debug(">>>> SignIn Failed");
+//			return "/signInPage";
+		}
 	}
 	
-	@PostMapping("/signUpPage/SignUp")
-	public String signUpMethod(
-			@RequestParam("email") String email, @RequestParam("password") String password,
-			@RequestParam("name") String name, @RequestParam("mobile") String mobile) {
-		
-		
-		String entryDate = "2021-08-01";
-		String role ="ROLE_USER";
-		int enabled = 1;
-		
-		memberService.signUp(name, mobile, email, password, entryDate, role, enabled);
+	@GetMapping("/signOut")
+	public void callSignOut(HttpServletResponse res, HttpSession session) throws IOException {
+		log.debug(">>>> " + session);
+		session.invalidate();
+		log.debug(">>>> After invalidate " + session);
+		res.sendRedirect("/main");
 	
-		return "/";
 	}
+	
+	@GetMapping("/myPage")
+	public String callMyPage(HttpSession session) throws IOException {
+		return "/SignIn/myPage";
+	}
+
 
 	@RequestMapping("/admin/adminMemberList")
 	public String adminMemberList(Model model) {

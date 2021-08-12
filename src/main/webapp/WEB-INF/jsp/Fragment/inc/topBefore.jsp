@@ -20,7 +20,11 @@
 		<c:when test="${not empty userName}">
 		<div class="col-9">
 			<div class="topSide">
+<<<<<<< HEAD
 				<a href="/">MY PAGE</a> <a href="/logout">LOG OUT</a>
+=======
+				<a href="/myPage">마이페이지</a> <a href="/signOut">로그아웃</a>
+>>>>>>> branch 'main' of https://github.com/2021PlayDataWebCourseTeam4/Project02.git
 			</div>
 		</div>
 		</c:when>

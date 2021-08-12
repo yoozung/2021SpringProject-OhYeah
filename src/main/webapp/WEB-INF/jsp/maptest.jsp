@@ -4,7 +4,7 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<title>네이버 지도 api</title>
+<title>예약가능한 식당 찾기</title>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="/jquery-1.10.1.min.js"></script>
 <!-- 사용한 지도 Client ID : 은 xxxxx "localhost" 에서 테스트 용도로 사용할 수 있습니다. -->
@@ -20,6 +20,7 @@
 </div>
 <script>
 var curtBtn ='<img src="/resource/img/CurrentLocationButton.png" alt="현재위치로 이동">';
+/* var curtLocation = { "lat": "37.5147509", "lng": "127.1003536" }; */
 var curtLocation = "";
 var CityHall = new naver.maps.LatLng(37.566465, 126.977924);
 

@@ -9,10 +9,10 @@
 <body>
 <%@ include file="../Fragment/TopNav/topNav.jsp" %>
 <form action="/signInPage/SignIn" method="post">
-<label for="signAccount">아이디</label>
+<label for="account">아이디</label>
 <input type="text" name="account" value=""/>
 <br/>
-<label for="signPassword">비밀번호</label>
+<label for="password">비밀번호</label>
 <input type="password" name="password" value="" />
 <br/>
 <input type="submit" name="signInSubmit" value="로그인" />

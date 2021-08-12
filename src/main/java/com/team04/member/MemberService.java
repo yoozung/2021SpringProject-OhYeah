@@ -51,6 +51,4 @@ public class MemberService implements MemberDao {
 		return memberDao.selectMemberList();
 	}
 
-
-
 }
