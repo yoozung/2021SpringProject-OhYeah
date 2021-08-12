@@ -7,6 +7,10 @@ a {
 /* table */
 table, tr, td, th { border: solid 1px navy; padding: 5px; margin: 5px; }
 
+/*---------------------dropdown---------------------------------*/
+
+
+
 /*-----------------------carousel---------------------------*/
 
 #carousel {
@@ -26,7 +30,7 @@ table, tr, td, th { border: solid 1px navy; padding: 5px; margin: 5px; }
 /*-----------------------top---------------------------*/
 
 .topMenu img {
-	width: 88px;
+	width: 90px;
 	height: 76px;
 	position: absolute; 
 	left: 0; 
@@ -42,8 +46,8 @@ table, tr, td, th { border: solid 1px navy; padding: 5px; margin: 5px; }
 }
 .topSide a {
 	padding: 2px;
-	color: #757575;
-	font-size: 15px;
+	color: #c5c5c5;
+	font-size: 14px;
 	font-weight: 700;
 	line-height: 20px;
 }
@@ -60,6 +64,7 @@ table, tr, td, th { border: solid 1px navy; padding: 5px; margin: 5px; }
 }
 
 /*-----------------------middle---------------------------*/
+
 .content {
 	margin: 1rem auto;
 }
@@ -72,10 +77,46 @@ table, tr, td, th { border: solid 1px navy; padding: 5px; margin: 5px; }
 }
 
 .middleMenu {
+	margin: .5rem auto 2rem auto;
+}
+.middleMenu .col-12 {
+	text-align: center; 
+	background-color: #ffa895; 
+	padding: .6rem 1rem;
+	border-radius: 20px;
+}
+
+.middleMenu .tab_bar {
+	margin: 0 auto;
+}
+
+.middleMenu .tab_bar div:first-child {
+	border-left: #ffffff 2px solid;
+}
+.middleMenu .tab_bar div {
+	border-right: #ffffff 2px solid;
+	color: white;
+	cursor: pointer;
+}
+
+
+.owner .middleMenu .dropdown-menu, .owner .middleMenu .ownershopmanage {
+    transform: translate3d(96px, 24px, 0px)!important;
+}
+
+
+
+.admin .middleMenu .dropdown-menu{
+	transform: translate3d(460px, 24px, 0px)!important;
+}
+.consumer .middleMenu .dropdown-menu{
+	transform: translate3d(523px, 24px, 0px)!important;
+}
+.middleMenu .dropdown-item {
 	text-align: center;
 }
 
-.middleMenu a {
+.middleMenu .col-6 a {
 	padding: 0 1rem;
 	font-size: 15px;
 	font-weight: 700;
@@ -111,6 +152,7 @@ a:hover {
 }
 
 /*-----------------------footer---------------------------*/
+
 .footer_wrap {
 	background-color: #fafafa;
 }

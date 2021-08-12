@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.team04.member.MemberService;
 import com.team04.member02.MemberDto02;
+import com.team04.member.MemberDto;
 
 import lombok.extern.slf4j.Slf4j;
 
