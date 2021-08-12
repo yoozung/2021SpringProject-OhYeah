@@ -4,6 +4,7 @@
 <!-- 탑메뉴 -->
 <div class="container">
 <c:set var="userName" value="${userName}"/>
+<c:set var="authorities" value="${member.getRole()}"/>
 	<div class="row topMenu">
 		<div class="col-3">
 			<a href="/"><img src="/resource/img/logo3.png"></a>
@@ -28,8 +29,12 @@
 	</div>
 	<div>
 		<div class="topSide">
-			<a href="/test1111">(임시) 식당지도</a>
+			<a href="/maptest">(임시) 식당지도</a>
+			<c:choose>
+			<c:when test="${authorities eq 'ROLE_ADMIN' }" >
 			<a href="/admin/adminMemberList">(임시) 전체 회원목록</a>
+			</c:when>
+			</c:choose>
 		</div>
 	</div>
 </div>

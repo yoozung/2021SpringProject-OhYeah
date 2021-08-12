@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="Fragment/TagLib/Taglib.jsp" %>
 <!doctype html>
 <html lang="ko">
 <head>
@@ -10,7 +10,6 @@
 <!-- 사용한 지도 Client ID : 은 xxxxx "localhost" 에서 테스트 용도로 사용할 수 있습니다. -->
 <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=q95pq98e92&submodules=geocoder"></script>
 </head>
-
 <body>
 <!-- 지도가 생성되는 div 영역, id 는 naverMap 으로 설정 -->
 <div id="map" style="margin:0 auto; width:1000px; max-width:100%; height:650px;"></div>
@@ -54,7 +53,8 @@ var redmarker = new naver.maps.Marker({
 	                  '<div style="padding-top:5px;padding-bottom:5px;padding-left:5px;padding-right:5px;background-color:#b12121; color:white; text-align:center;border:1px solid #831616; border-radius:14px; opacity:75%" onmouseover="javascript:overStore(\'store3\');" onmouseout="javascript:outStore(\'store3\');">' +
 	                      '<div style="font-weight: bold; font-size:14px"> 식당1 </div>' +
 	                      '<div id="store3" style="font-weight: normal; font-size:13px; margin-top:3px; display:none"> 매드포갈릭<br/>02-222-1111<br/>양식</div>' +
-	                      '</div>'
+	                      '<div><input type="button" onclick="openWaitList()" value="줄 서기"></div>' +
+	                  '</div>'
 	              ].join(''),
 	      size: new naver.maps.Size(38, 58),
 	      anchor: new naver.maps.Point(19, 58),
@@ -248,5 +248,6 @@ naver.maps.Event.addListener(marker, "click", function(e) {
     }
 });
 </script>
+<script type="text/javascript" src="/resource/js/maptest.js"></script>
 </body>
 </html>

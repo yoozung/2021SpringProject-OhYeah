@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -25,15 +26,8 @@ public class MainController {
 //		session.setAttribute("userName", req.getRemoteUser());
 		return "main";
 	}
-	@GetMapping("/afterMain")
-	public String afterMain(HttpServletRequest req, HttpServletResponse res, HttpSession session) {
-		log.info(">>> Called afterMain()...");
-		session.setAttribute("userName", req.getRemoteUser());
-		log.debug(">>>userName: " + req.getRemoteUser());
-		return "AfterMain";
-	}
 	
-	@GetMapping("/test1115")
+	@GetMapping("/maptest")
 	public String testpage2() {
 		return "/maptest";
 	}

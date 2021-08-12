@@ -63,15 +63,18 @@ public class MemberController {
 	@PostMapping("/signInPage/SignIn")
 	public void singInMethod(@RequestParam("account")String account, @RequestParam("password")String password,
 			HttpServletRequest req, HttpServletResponse res, HttpSession session) throws IOException {
-		MemberDto member = memberService.signIn(account, password);
-		if(!member.equals(null)) {
+		MemberDto member = null;
+		if(memberService.signIn(account, password) != null) {
+			member = memberService.signIn(account,password);
 			session.setAttribute("member", member);
 			res.sendRedirect("/main");
 			log.debug(">>>> SignIn Complete : " + session);
 //			return "/main";
 		} else {			
 			log.debug(">>>> SignIn Failed");
-//			return "/signInPage";
+			session.setAttribute("status", "fail");
+			res.sendRedirect("/signInPage");
+//			return "/SignInPage";
 		}
 	}
 	

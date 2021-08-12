@@ -15,7 +15,8 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
 <!-- end bootstrap -->
 <link type="text/css" rel="stylesheet" href="/resource/css/inc.css">
-
+<c:set var="userName" value="${member.getName()}"/>
+<c:set var="authorities" value="${member.getRole()}"/>
 </head>
 <body>
 <%@ include file="../Fragment/inc/topBefore.jsp" %>
