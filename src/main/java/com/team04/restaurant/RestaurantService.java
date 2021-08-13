@@ -18,10 +18,10 @@ public class RestaurantService implements RestaurantDao {
 	@Autowired
 	private RestaurantDao restaurantDao;
 	
-	@Override
-	public List<RestaurantDto> selectRestaurantList() {
-		return restaurantDao.selectRestaurantList();
-	}
+//	@Override
+//	public List<RestaurantDto> selectRestaurantList() {
+//		return restaurantDao.selectRestaurantList();
+//	}
 
 	@Override
 	public RestaurantDto selectRestaurant(String shopNo) {
@@ -32,6 +32,12 @@ public class RestaurantService implements RestaurantDao {
 	@Override
 	public List<RestaurantDto> selectShopList() {
 		return restaurantDao.selectShopList();
+	}
+
+	@Override
+	public List<RestaurantDto> selectrestaurantList() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
