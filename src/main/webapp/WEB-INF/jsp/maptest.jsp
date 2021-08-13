@@ -11,7 +11,8 @@
 <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=q95pq98e92&submodules=geocoder"></script>
 <link type="text/css" rel="stylesheet" href="/resource/css/inc.css">
 </head>
-
+<c:set var="userName" value="${member.getName()}"/>
+<c:set var="authorities" value="${member.getRole()}"/>
 <body>
 <%@ include file="Fragment/inc/topBefore.jsp" %>
 <!-- start middle menu-->
@@ -29,19 +30,21 @@
 <!-- end middle menu-->
 <!-- 지도가 생성되는 div 영역, id 는 naverMap 으로 설정 -->
 <div id="map" style="margin:0 auto; width:1000px; max-width:100%; height:650px;"></div>
+
+<!-- 
 <div style="text-align:center; margin-top:10px;">
 	위도 : <input type="text" name="namp_lat" />
 	경도 : <input type="text" name="namp_lng" />
 </div>
-
-
-
+-->
+<!-- 
 <div class="container maptest">
 <h4>jsp ShopList</h4>
 <c:forEach var="item" items="${list}" varStatus="idx">
  ${item.shopNo}, ${item.shopName}, ${item.shopMobile}, ${item.shopSite}, ${item.shopCategory}, ${item.lat}, ${item.lng}, ${item.state}<br/> 
 </c:forEach>
 </div>
+-->
 <%@ include file="Fragment/inc/footer.jsp"%>
 </body>
 <script>
@@ -66,7 +69,7 @@ var map = new naver.maps.Map('map',mapOptions);
 var marker = new naver.maps.Marker({
 	position: CityHall,
 	map: map,
-	icon: {url: "/resource/img/SampleshopLocation.png"}
+	// icon: {url: "/resource/img/SampleshopLocation.png"}
 });
 
 
@@ -81,7 +84,7 @@ function CustomMarker(lat, lng, shopNo, shopName, state, shopMobile, shopCategor
 		console.log("state3");
 		contents_html =	'<div style="padding-top:5px;padding-bottom:5px;padding-left:5px;padding-right:5px;background-color:#b12121; color:white; text-align:center;border:1px solid #831616; border-radius:14px; opacity:75%" onmouseover="javascript:overshop(\''+shopNo+'\');" onmouseout="javascript:outshop(\''+shopNo+'\');">' +
         '<div style="font-weight: bold; font-size:14px"> '+shopName+' </div>' +
-        '<div style="font-weight: normal; font-size:13px; margin-top:3px; display:none" id="'+shopNo+'"> '+shopMobile+'<br/>'+shopCategory+'</div>' + '<div><input type="submit" value="대기"></div>'+
+        '<div style="font-weight: normal; font-size:13px; margin-top:3px; display:none" id="'+shopNo+'"> '+shopMobile+'<br/>'+shopCategory+'</div>' + '<div><input type="submit" onclick="openWaitList()" value="대기"></div>'+
         '</div>';	
 	}
 	
@@ -90,7 +93,7 @@ function CustomMarker(lat, lng, shopNo, shopName, state, shopMobile, shopCategor
 	{
 		contents_html =	'<div style="padding-top:5px;padding-bottom:5px;padding-left:5px;padding-right:5px;background-color:#d3cc07; color:white; text-align:center;border:1px solid #a09b07; border-radius:14px; opacity:75%" onmouseover="javascript:overshop(\''+shopNo+'\');" onmouseout="javascript:outshop(\''+shopNo+'\');">' +
 		'<div style="font-weight: bold; font-size:14px"> '+shopName+' </div>' +
-        '<div style="font-weight: normal; font-size:13px; margin-top:3px; display:none" id="'+shopNo+'"> '+shopMobile+'<br/>'+shopCategory+'</div>' + '<div><input type="submit" value="대기"></div>'+
+        '<div style="font-weight: normal; font-size:13px; margin-top:3px; display:none" id="'+shopNo+'"> '+shopMobile+'<br/>'+shopCategory+'</div>' + '<div><input type="submit" onclick="openWaitList()" value="대기"></div>'+
         '</div>';	
 	}
 	
@@ -99,7 +102,7 @@ function CustomMarker(lat, lng, shopNo, shopName, state, shopMobile, shopCategor
 	{
 		contents_html =	'<div style="padding-top:5px;padding-bottom:5px;padding-left:5px;padding-right:5px;background-color:#43f707; color:white; text-align:center;border:1px solid #3a8c1f; border-radius:14px; opacity:75%" onmouseover="javascript:overshop(\''+shopNo+'\');" onmouseout="javascript:outshop(\''+shopNo+'\');">' +
 		'<div style="font-weight: bold; font-size:14px"> '+shopName+' </div>' +
-        '<div style="font-weight: normal; font-size:13px; margin-top:3px; display:none" id="'+shopNo+'"> '+shopMobile+'<br/>'+shopCategory+'</div>' + '<div><input type="submit" value="대기"></div>'+
+        '<div style="font-weight: normal; font-size:13px; margin-top:3px; display:none" id="'+shopNo+'"> '+shopMobile+'<br/>'+shopCategory+'</div>' + '<div><input type="submit" onclick="openWaitList()" value="대기"></div>'+
         '</div>';	
 	}
 	
@@ -218,4 +221,5 @@ naver.maps.Event.addListener(marker, "click", function(e) {
     }
 });
 </script>
+<script type="text/javascript" src="/resource/js/maptest.js"></script>
 </html>

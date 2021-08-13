@@ -1,0 +1,75 @@
+@charset "UTF-8";
+
+body {
+    background-color: rgb(230, 230, 230);
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.signInForm {
+   /* background-color: rgb(100, 100, 100); */
+   width: 55%;
+   margin-top: 10%;
+   margin-left: 23%;
+}
+
+.title {
+    height: 100px;
+    text-align: center;
+}
+
+.titleLogo {
+    margin-top: 20px;
+    line-height: 30px;
+    font-size: 30px;
+}
+.titleLogo > .Coral {
+    color: rgb(255, 126, 126);
+}
+.Coral2 {
+    margin-left: -26px;
+}
+.form {
+    text-align: center;
+}
+
+.signInfo {
+    height: 30px !important;
+    text-align: end;
+    margin-right: 6%;
+}
+.signInfo a {
+    font-size: 14px;
+    color:rgb(0, 0, 0) !important;
+}
+
+.signInfo a:hover {
+    text-decoration: none;
+    color:rgb(231, 106, 106) !important;
+}
+
+.input {  
+    height: 50px;
+}
+input {
+    border: 0;
+    width: 87%;
+    height: 95%;
+}
+
+.signInBtn {
+    border: 0;
+    height: 50px;
+    background-color: rgb(255, 126, 126);
+    color: rgb(255, 255, 255);
+}
+.signInBtn:hover {
+    border: 2px solid rgb(255, 126, 126);
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+}
+
+.blank {
+    height: 20px;
+}

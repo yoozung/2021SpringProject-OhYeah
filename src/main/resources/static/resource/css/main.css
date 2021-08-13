@@ -1,0 +1,117 @@
+@charset "UTF-8";
+
+body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+.mainSector1 {
+    padding: 0;
+}
+
+.nav-logo {
+    width: 92px;
+    height: 40px;
+}
+
+.nav-link {
+    color: rgba(100, 100, 100, 1);
+}
+
+.nav-link:hover {
+    color: rgb(10, 10, 10);
+}
+
+.menu-nav {
+    margin-left: 5%;
+}
+
+.member-nav {
+    margin-left: 60%;
+}
+.authorities {
+	margin-left: 50%;
+}
+.authorities > li:first-child {
+	margin-top: 8.3px;
+}
+
+.carousel-item {
+    height: 500px !important;
+}
+
+.mainSector1 {
+    width: 80%;
+    height: 500px;
+    background-color: cadetblue;
+}
+
+.mainSectorM1 {
+    width: 80%;
+    height: 100px;
+}
+
+.mainSector2 {
+    width: 80%;
+    height: 400px;
+    background-color: blanchedalmond;
+}
+
+.sector2Child1 {
+    background-image: url(../img/main/food4.jpg);
+    background-position-x: 40%;
+    background-position-y: 50%;
+    background-repeat: no-repeat;
+    height: 400px;
+    /* text-align: center; */
+}
+.childH3 {
+    /* margin-top: 50%; */
+    color: rgb(255, 255, 255);
+    text-shadow: 1px 1px 1px rgb(0, 0, 0);
+    cursor: default;
+    font-size: 4rem;
+    font-weight: bolder;
+}
+
+.sector2Child2 {
+    background-color: rgb(240, 240, 240);
+    height: 400px;
+}
+.child2Row1 {    
+    height: 200px;
+}
+.child2RowCell1 {
+    background-image: url(../img/main/food5.jpeg);
+    background-size: 135%;
+    background-repeat: no-repeat;
+}
+.child2RowCell2 {
+    background-image: url(../img/main/main4.jpg);
+    background-size: 98%;
+}
+.childH3small {
+    margin-top: 0;
+    color: rgb(255, 255, 255);
+    text-shadow: 1px 1px 1px rgb(0, 0, 0);
+    cursor: default;
+    font-size: 2rem;
+    font-weight: bolder;
+}
+.child2Row2 {
+    background-image: url(../img/main/food6.JPG);
+    background-position: 40%;
+    background-size: 100%;
+    height: 200px;
+}
+.child2RowCell {
+    width: 100%;
+}
+
+.footer {
+    text-align: center;
+    height: 200px;
+}
+.footerTitle {
+    margin-top: 50px;
+}

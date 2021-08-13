@@ -1,0 +1,79 @@
+@charset "UTF-8";
+
+body {
+    background-color: rgb(230, 230, 230);
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.signUpForm {
+   /* background-color: rgb(100, 100, 100); */
+   width: 55%;
+   margin-top: 10%;
+   margin-left: 25%;
+}
+
+.signInfo a {
+    margin-left: 0%;
+    font-size: 14px;
+    color:rgb(0, 0, 0) !important;
+}
+
+.title {
+    height: 100px;
+    text-align: center;
+}
+
+.titleLogo {
+    margin-top: 20px;
+    line-height: 30px;
+    font-size: 30px;
+}
+.titleLogo > .Coral {
+    color: rgb(255, 126, 126);
+}
+.Coral2 {
+    margin-left: -26px;
+}
+.form {
+    text-align: center;
+}
+
+.input {  
+    height: 50px;
+    background-color: rgb(255, 255, 255);
+}
+input {
+    border: 0;
+    width: 99%;
+    height: 95%;
+}
+
+.inputHead {
+    text-align: start;
+}
+
+.inputHead > label {
+    margin-top: 17%;
+}
+
+.inputBody > .cancle {
+    border: 1px solid rgb(255, 126, 126);
+    background-color: rgb(255, 255, 255);
+    color:rgb(0, 0, 0);
+}
+.inputBody > .cancle:hover {
+    background-color: rgb(255, 126, 126);
+    color: rgb(255, 255, 255);
+}
+
+.inputBody > .submit {
+    background-color: rgb(255, 126, 126);
+    color: rgb(255, 255, 255);
+}
+.inputBody > .submit:hover {
+    border: 1px solid rgb(255, 126, 126);
+    background-color: rgb(255, 255, 255);
+    color:rgb(0, 0, 0);
+}

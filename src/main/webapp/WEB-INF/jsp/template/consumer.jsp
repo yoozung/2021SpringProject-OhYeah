@@ -15,11 +15,8 @@
 	<div class="container consumer">
 		<div class="row middleMenu">
 			<div class="row col-12">
-<<<<<<< HEAD
-				<div class="row col-8 tab_bar">									
-=======
+				<div class="row col-8 tab_bar">	
 				<div class="row col-8 tab_bar">
->>>>>>> branch 'main' of https://github.com/2021PlayDataWebCourseTeam4/Project02.git
 					<div class="col-4 tab_line" onclick="go_manage();">SHOP SEARCH</div>
 					<div class="col-4 tab_line" onclick="map();">MAP</div>
 					<div class="col-4 tab_line dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">WAIT</div>
