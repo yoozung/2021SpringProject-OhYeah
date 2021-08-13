@@ -13,17 +13,19 @@
 </head>
 <body>
 <%@ include file="Fragment/inc/topBefore.jsp" %>
-<div class="container admin">
+<!-- start middle menu-->
+	<div class="container consumer">
 		<div class="row middleMenu">
-		
 			<div class="row col-12">
 				<div class="row col-8 tab_bar">
-					<div class="col-6" onclick="go_manage();">SEARCH</div>
-					<div class="col-6" onclick="map();">MAP</div>
+					<div class="col-6 tab_line" onclick="#">SHOP SEARCH</div>
+					<div class="col-6 tab_line" onclick="map();">MAP</div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+<!-- end middle menu-->
 <%@ include file="Fragment/inc/carousel.jsp" %>
 
 		<div class="col-9">

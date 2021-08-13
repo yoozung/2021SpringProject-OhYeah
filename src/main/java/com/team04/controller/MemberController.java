@@ -90,17 +90,22 @@ public class MemberController {
 		return "/SignIn/myPage";
 	}
 
-
+	/** 전체회원조회 */
 	@RequestMapping("/admin/adminMemberList")
 	public String adminMemberList(Model model) {
-		log.debug(">>>> Called adminMemberList");
-		List<MemberDto02> list = memberService.selectMemberList();
-		log.debug("#### 컨트롤러테스트");
+		List<MemberDto> list = memberService.selectMemberList();
 		model.addAttribute("list", list);
-		log.debug("#### 컨트롤러리턴테스트");
 		return "admin/adminMemberList";
 	}
 	
+	@RequestMapping("/admin/adminMemberDrop")
+	public String adminMemberDrop(Model model) {
+		List<MemberDto> list = memberService.selectMemberList();
+		log.debug("#### 컨트롤러테스트");
+		model.addAttribute("list", list);
+		return "admin/adminMemberDrop";
+	}
+
 	@RequestMapping("/admin/adminShopAccept")
 	public String adminShopAccept() {
 		return "admin/adminShopAccept";

@@ -6,10 +6,13 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface RestaurantDao {
+
 	/** 전체목록조회*/
 	public List<RestaurantDto> selectrestaurantList();
 	
 	/** 상세목록조회*/
 	public RestaurantDto selectRestaurant(String shopNo);
 	
+	/** 유정 전체식당조회*/
+	public List<RestaurantDto> selectShopList();
 }
