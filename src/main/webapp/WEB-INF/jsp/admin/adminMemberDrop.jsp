@@ -1,10 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ include file="../Fragment/TagLib/Taglib.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+<title>관리자 | 회원삭제</title>
 <link type="text/css" rel="stylesheet" href="/resource/css/inc.css">
+<link type="text/css" rel="stylesheet" href="/resource/css/adminPage.css">
 
 </head>
 <body>
@@ -35,19 +38,20 @@
 		</div>
 	</div>
 <!-- end middle menu-->
-<div class="container adminShopAccept">
+<div class="container adminMemberDrop">
+<h4>Member Drop</h4>
+<form action="#" method="post" name="selectForm" id="selectForm">
+<input type="submit" value="전체선택" id="btn-all" onclick="checkAll()">
+<input type="reset" value="전체취소" id="btn-all" onclick="clearAll()">
 <table>
 	<tr>
 		<th>번호</th>
-		<th>가게번호</th>
-		<th>가게명</th>
-		<th>전화번호</th>
-		<th>주소</th>
-		<th>사장번호</th>
-		<th>사이트</th>
-		<th>분류</th>
-		<th>좌석수</th>
-		<th>등록일</th>
+		<th>이름</th>
+		<th>이메일</th>
+		<th>비밀번호</th>
+		<th>휴대폰</th>
+		<th>가입일</th>
+		<th>선택</th>
 	</tr>
 	
 	<!-- 검색조건에 해당하는 결과가 없는 경우 메세지 출력 -->
@@ -60,22 +64,23 @@
 	<c:forEach var="dto" items="${list}" varStatus="status">
 		<tr>
 			<th>${status.count}</th>
-			<th>${dto.shopNo}</th>
-			<th>${dto.shopName}</th>
-			<th>${dto.shopMobile}</th>
-			<th>${dto.shopAddress}</th>
-			<th>${dto.businessNumber}</th>
-			<th>${dto.shopSite}</th>
-			<th>${dto.shopCategory}</th>
-			<th>${dto.shopSeat}</th>
-			<th>${dto.registerDate}</th>
+			<th>${dto.name}</th>
+			<th>${dto.email}</th>
+			<th>${fn:substring(dto.password, 0, 2)}<c:forEach begin="2" end="${fn:length(dto.password)}" step="1">*</c:forEach> 
+			</th>
+			<th>${dto.mobile}</th>
+			<th>${dto.entryDate}</th>
+			<th><input type="checkbox" id="email">${dto.email}</th>
 		</tr>
 	</c:forEach>
 </table>
 
-<input type="submit" value="승인" id="btn"/>
-<input type="reset" value="취소" id="btn" />
+
+<input type="button" value="회원삭제" id="btn" />
+<input type="reset" value="취소"  id="btn" class="choose" onclick="">
+</form>
 </div>
 <%@ include file="../Fragment/inc/footer.jsp"%>
 </body>
+<script type="text/javascript" src="/resource/js/admin.js"></script>
 </html>

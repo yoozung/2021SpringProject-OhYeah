@@ -16,13 +16,22 @@
 		<div class="row middleMenu">
 			<div class="row col-12">
 				<div class="row col-8 tab_bar">
+<<<<<<< HEAD
 					<div class="col-4" onclick="go_manage();">SHOP SEARCH</div>
 					<div class="col-4" onclick="map()">MAP</div>
 					<div class="col-4 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">WAIT</div>
+=======
+					<div class="col-4 tab_line" onclick="go_manage();">SHOP SEARCH</div>
+					<div class="col-4 tab_line" onclick="map();">MAP</div>
+					<div class="col-4 tab_line dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">WAIT</div>
+>>>>>>> branch 'main' of https://github.com/2021PlayDataWebCourseTeam4/Project02.git
 					<div class="dropdown-menu">
+<<<<<<< HEAD
 						<a class="dropdown-item" href="/waitList/WaitListMySelect">대기조회</a>
+=======
+						<a class="dropdown-item" href="#">대기조회</a>
+>>>>>>> branch 'main' of https://github.com/2021PlayDataWebCourseTeam4/Project02.git
 						<a class="dropdown-item" href="#">대기변경</a>
-						
 					</div>
 				</div>
 			</div>

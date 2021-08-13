@@ -18,12 +18,21 @@
 		<div class="row middleMenu">
 			<div class="row col-12">
 				<div class="row col-8 tab_bar">
-					<div class="col-6" onclick="go_manage();">SHOP MANAGE</div>
-					<div class="col-6 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">MEMBER MANAGE</div>
-					<div class="dropdown-menu">
-						<a class="dropdown-item" href="/admin/adminMemberList">LIST</a>
-						<a class="dropdown-item" href="#">DROP</a>
-						
+					<div class="col-6 asd1 tab_line">
+						<div class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">SHOP MANAGE</div>
+						<div class="dropdown-menu">
+							<a class="dropdown-item" href="/admin/adminShopAccept">등록신청관리</a>
+							<a class="dropdown-item" href="/admin/adminShopList">식당조회</a>
+							<a class="dropdown-item" href="/admin/adminShopList">수정관리</a>
+							<a class="dropdown-item" href="/admin/adminShopList">삭제관리</a>
+						</div>
+					</div>
+					<div class="col-6 asd2 tab_line">
+						<div class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">MEMBER MANAGE</div>
+						<div class="dropdown-menu">
+							<a class="dropdown-item" href="/admin/adminMemberList">회원조회</a>
+							<a class="dropdown-item" href="/admin/adminMemberDrop">회원삭제</a>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -48,7 +57,7 @@
 			<th colspan=10>${message}</th>
 		</tr>
 	</c:if>
-	
+
 	<c:forEach var="dto" items="${list}" varStatus="status">
 		<tr>
 			<th>${status.count}</th>
@@ -60,9 +69,10 @@
 			<th>${dto.entryDate}</th>
 		</tr>
 	</c:forEach>
-</table>
 
+</table>
 </div>
 <%@ include file="../Fragment/inc/footer.jsp"%>
 </body>
+<script type="text/javascript" src="/resource/js/common.js"></script>
 </html>

@@ -20,6 +20,7 @@
 		<c:when test="${not empty userName}">
 		<div class="col-9">
 			<div class="topSide">
+<<<<<<< HEAD
 				<span>환영합니다 <c:out value="${userName}"/> 님</span>
 				<c:if test="${authorities eq 'ROLE_ADMIN'}">
 					<span>운영자</span>
@@ -35,6 +36,11 @@
 				<c:if test="${authorities eq 'ROLE_ADMIN' }" >				
 					<a href="/admin/adminMemberList">전체 회원목록</a>
 				</c:if>
+=======
+
+				<a href="/myPage">MY PAGE</a> <a href="/signOut">LOG OUT</a>
+
+>>>>>>> branch 'main' of https://github.com/2021PlayDataWebCourseTeam4/Project02.git
 			</div>
 		</div>
 		</c:when>		
@@ -42,6 +48,7 @@
 		
 	</div>
 	
+<<<<<<< HEAD
 <!-- 	<div>
 		<div class="topSide">
 			<a href="/maptest">(임시) 식당지도</a>
@@ -52,4 +59,7 @@
 			</c:choose>
 		</div>
 	</div> -->
+=======
+
+>>>>>>> branch 'main' of https://github.com/2021PlayDataWebCourseTeam4/Project02.git
 </div>

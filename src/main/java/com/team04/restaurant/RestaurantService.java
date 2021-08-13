@@ -5,10 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.team04.member.MemberDao;
 
 @Service
 
 public class RestaurantService implements RestaurantDao {
+
 	@Autowired
 	private RestaurantDao restaurantDao;
 	
@@ -22,8 +24,10 @@ public class RestaurantService implements RestaurantDao {
 		return restaurantDao.selectRestaurant(shopNo);
 	}
 	
-	
-
-	
+	//유정
+	@Override
+	public List<RestaurantDto> selectShopList() {
+		return restaurantDao.selectShopList();
+	}
 
 }

@@ -170,15 +170,19 @@ public class MemberController {
 	public String callMyEditAction() {
 		return "";
 	}
-
 	@RequestMapping("/admin/adminMemberList")
 	public String adminMemberList(Model model) {
-		log.debug(">>>> Called adminMemberList");
-		List<MemberDto02> list = memberService.selectMemberList();
+		List<MemberDto> list = memberService.selectMemberList();
+		model.addAttribute("list", list);
+		return "admin/adminMemberList";
+	}
+	
+	@RequestMapping("/admin/adminMemberDrop")
+	public String adminMemberDrop(Model model) {
+		List<MemberDto> list = memberService.selectMemberList();
 		log.debug("#### 컨트롤러테스트");
 		model.addAttribute("list", list);
-		log.debug("#### 컨트롤러리턴테스트");
-		return "admin/adminMemberList";
+		return "admin/adminMemberDrop";
 	}
 
 	@RequestMapping("/admin/adminShopAccept")
