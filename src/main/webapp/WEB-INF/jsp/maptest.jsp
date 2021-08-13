@@ -1,44 +1,32 @@
-<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-=======
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
->>>>>>> branch 'main' of https://github.com/2021PlayDataWebCourseTeam4/Project02.git
 <%@ include file="Fragment/TagLib/Taglib.jsp" %>
 <!doctype html>
 <html lang="ko">
 <head>
 <meta charset="utf-8">
 <title>예약가능한 식당 찾기</title>
-<link type="text/css" rel="stylesheet" href="/resource/css/inc.css">
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="/jquery-1.10.1.min.js"></script>
 <!-- 사용한 지도 Client ID : 은 xxxxx "localhost" 에서 테스트 용도로 사용할 수 있습니다. -->
 <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=q95pq98e92&submodules=geocoder"></script>
 <link type="text/css" rel="stylesheet" href="/resource/css/inc.css">
 </head>
-<c:set var="userName" value="${member.getName()}"/>
-<c:set var="authorities" value="${member.getRole()}"/>
+
 <body>
 <%@ include file="Fragment/inc/topBefore.jsp" %>
-<div class="container admin">
-<<<<<<< HEAD
-		<div class="row middleMenu">		
-			<div class="row col-12">
-				<div class="row col-8 tab_bar">
-					<div class="col-6" onclick="">SEARCH</div>
-=======
+<!-- start middle menu-->
+	<div class="container consumer">
 		<div class="row middleMenu">
-		
 			<div class="row col-12">
 				<div class="row col-8 tab_bar">
-					<div class="col-6" onclick="go_manage();">SEARCH</div>
->>>>>>> branch 'main' of https://github.com/2021PlayDataWebCourseTeam4/Project02.git
-					<div class="col-6" onclick="map();">MAP</div>
+					<div class="col-6 tab_line" onclick="#">SHOP SEARCH</div>
+					<div class="col-6 tab_line" onclick="map();">MAP</div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+<!-- end middle menu-->
 <!-- 지도가 생성되는 div 영역, id 는 naverMap 으로 설정 -->
 <div id="map" style="margin:0 auto; width:1000px; max-width:100%; height:650px;"></div>
 <div style="text-align:center; margin-top:10px;">
@@ -82,27 +70,6 @@ var marker = new naver.maps.Marker({
 });
 
 
-<<<<<<< HEAD
-//혼잡도 : 3
-var redmarker = new naver.maps.Marker({
-	  position: new naver.maps.LatLng(37.5231227, 127.1069538),
-	  map: map,
-	  title: '혼잡',
-	  icon: {
-	      content: [
-	                  '<div style="padding-top:5px;padding-bottom:5px;padding-left:5px;padding-right:5px;background-color:#b12121; color:white; text-align:center;border:1px solid #831616; border-radius:14px; opacity:75%" onmouseover="javascript:overStore(\'store3\');" onmouseout="javascript:outStore(\'store3\');">' +
-	                      '<div style="font-weight: bold; font-size:14px"> 식당1 </div>' +
-	                      '<div id="store3" style="font-weight: normal; font-size:13px; margin-top:3px; display:none"> 매드포갈릭<br/>02-222-1111<br/>양식</div>' +
-	                      '<div><input type="button" onclick="openWaitList()" value="줄 서기"></div>' +
-	                  '</div>'
-	              ].join(''),
-	      size: new naver.maps.Size(38, 58),
-	      anchor: new naver.maps.Point(19, 58),
-	  },
-	  draggable: false
-});
-=======
->>>>>>> branch 'main' of https://github.com/2021PlayDataWebCourseTeam4/Project02.git
 
 function CustomMarker(lat, lng, shopNo, shopName, state, shopMobile, shopCategory) {
 	//심각성 : 1
@@ -251,10 +218,4 @@ naver.maps.Event.addListener(marker, "click", function(e) {
     }
 });
 </script>
-<<<<<<< HEAD
-<script type="text/javascript" src="/resource/js/common.js"></script>
-<script type="text/javascript" src="/resource/js/maptest.js"></script>
-</body>
-=======
->>>>>>> branch 'main' of https://github.com/2021PlayDataWebCourseTeam4/Project02.git
 </html>

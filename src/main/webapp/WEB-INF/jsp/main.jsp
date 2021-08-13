@@ -11,25 +11,20 @@
 <title>MAIN</title>
 </head>
 <body>
-<%@ include file="Fragment/inc/topBefore.jsp" %>
-<!-- start middle menu-->
+	<%@ include file="Fragment/inc/topBefore.jsp"%>
+	<!-- start middle menu-->
 	<div class="container consumer">
-
 		<div class="row middleMenu">
 			<div class="row col-12">
 				<div class="row col-8 tab_bar">
 					<div class="col-6 tab_line" onclick="#">SHOP SEARCH</div>
 					<div class="col-6 tab_line" onclick="map();">MAP</div>
-					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 	<%@ include file="Fragment/inc/carousel.jsp"%>
 	<%@ include file="Fragment/inc/footer.jsp"%>
-<!-- end middle menu-->
-<%@ include file="Fragment/inc/carousel.jsp" %>	
-<%@ include file="Fragment/inc/footer.jsp"%>
 </body>
 <script type="text/javascript" src="/resource/js/common.js"></script>
 </html>
