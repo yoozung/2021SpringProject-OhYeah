@@ -2,8 +2,8 @@
 <%@ include file="../Fragment/TagLib/Taglib.jsp" %>
 <!DOCTYPE html>
 <html>
-<c:set var="userName" value="${userName}"/>
-<c:set var="password" value="${password}"/>
+<c:set var="userName" value="${member.getName()}"/>
+<c:set var="authorities" value="${member.getRole()}"/>
 <head>
 <meta charset="UTF-8">
 <link type="text/css" rel="stylesheet" href="/resource/css/inc.css">
@@ -20,6 +20,7 @@
 					<div class="col-4 tab_line" onclick="map();">MAP</div>
 					<div class="col-4 tab_line dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">WAIT</div>
 					<div class="dropdown-menu">
+						<a class="dropdown-item" href="/waitList/WaitListMySelect">대기조회</a>
 						<a class="dropdown-item" href="#">대기조회</a>
 						<a class="dropdown-item" href="#">대기변경</a>
 					</div>
@@ -27,10 +28,7 @@
 			</div>
 		</div>
 	</div>
-<!-- end middle menu-->
 <%@ include file="../Fragment/inc/carousel.jsp" %>
-
-
 <%@ include file="../Fragment/inc/footer.jsp"%>
 </body>
 <script type="text/javascript" src="/resource/js/common.js"></script>

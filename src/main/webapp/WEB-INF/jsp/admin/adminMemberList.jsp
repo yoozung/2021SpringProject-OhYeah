@@ -7,6 +7,8 @@
 <meta charset="UTF-8">
 <title>관리자 | 회원조회</title>
 <link type="text/css" rel="stylesheet" href="/resource/css/inc.css">
+<c:set var="userName" value="${member.getName()}"/>
+<c:set var="authorities" value="${member.getRole()}"/>
 <link type="text/css" rel="stylesheet" href="/resource/css/adminPage.css">
 </head>
 <body>
