@@ -15,10 +15,11 @@
 <c:set var="email" value="${member.getEmail()}" />
 <c:set var="password" value="${member.getPassword()}" /> 
 <div class="myPageFormDiv">
+<form action="/myEditPage/EditAction" method="post">
 <table class="myPageForm">
 	<tr class="layer">
 		<td class="tdFull" colspan="2">
-			<h3>회원정보 조회</h3>
+			<h3>회원정보 수정</h3>
 		</td>
 	</tr>
 	<tr class="layer">
@@ -55,11 +56,12 @@
 	</tr>
 	<tr class="layer">
 		<td class="tdFull" colspan="2">
-			<input type="button" name="backward" onclick="javascript:window.history.back()" value="뒤로가기"/>
-			<input type="button" name="" onclick="javascript:window.location='/myEditPage'" value="수정페이지로" />
+			<input type="button" name="backward" onclick="javascript:window.location='/main'" value="메인페이지로"/>
+			<input type="submit" name=""value="수정하기" />
 		</td>
 	</tr>
 </table>
+</form>
 </div>
 </body>
 </html>

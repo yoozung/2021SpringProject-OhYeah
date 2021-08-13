@@ -2,13 +2,12 @@
 <%@ include file="../Fragment/TagLib/Taglib.jsp" %>
 <!DOCTYPE html>
 <html>
-<c:set var="userName" value="${userName}"/>
-<c:set var="password" value="${password}"/>
+<c:set var="userName" value="${member.getName()}"/>
+<c:set var="authorities" value="${member.getRole()}"/>
 <head>
 <meta charset="UTF-8">
 <link type="text/css" rel="stylesheet" href="/resource/css/inc.css">
-
-<title>admin</title>
+<title>ADMIN PAGE</title>
 </head>
 <body>
 <%@ include file="../Fragment/inc/topBefore.jsp" %>

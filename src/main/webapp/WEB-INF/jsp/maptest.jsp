@@ -15,16 +15,19 @@
 
 <body>
 <%@ include file="Fragment/inc/topBefore.jsp" %>
+<!-- start middle menu-->
 	<div class="container consumer">
 		<div class="row middleMenu">
 			<div class="row col-12">
 				<div class="row col-8 tab_bar">
 					<div class="col-6 tab_line" onclick="#">SHOP SEARCH</div>
 					<div class="col-6 tab_line" onclick="map();">MAP</div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+<!-- end middle menu-->
 <!-- 지도가 생성되는 div 영역, id 는 naverMap 으로 설정 -->
 <div id="map" style="margin:0 auto; width:1000px; max-width:100%; height:650px;"></div>
 <div style="text-align:center; margin-top:10px;">
