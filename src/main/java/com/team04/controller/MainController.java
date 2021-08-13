@@ -33,9 +33,24 @@ public class MainController {
 		return "AfterMain";
 	}
 	
-	@GetMapping("/test1111")
-	public String testpage2() {
-		return "/maptest";
+//	@GetMapping("/test1115")
+//	public String testpage2() {
+//		return "/maptest";
+//	}
+	
+	@GetMapping("/adminTemplate")
+	public String adminTemplate() {
+		return "/template/admin";
+	}
+	
+	@GetMapping("/consumerTemplate")
+	public String consumerTemplate() {
+		return "/template/consumer";
+	}
+	
+	@GetMapping("/ownerTemplate")
+	public String ownerTemplate() {
+		return "/template/owner";
 	}
 	
 }

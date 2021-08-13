@@ -1,0 +1,10 @@
+
+.adminMemberList {
+}
+
+.h4 {
+	font-size: 20px;
+}
+
+/* table */
+table, tr, td, th { border: solid 1px navy; padding: 5px; margin: 5px; }

@@ -14,15 +14,19 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class RestaurantDto {
+	
 	private String shopNo;
 	private String shopName;
 	private String shopMobile;
-	private String shopAddress;
-	private String businessNumber;
 	private String shopSite;
-	private String category1;
-	private String category2;
-	private int shopSeat;
-	private Date registerDate;
-	
+	private String shopCategory;
+	private String shopSeat;
+	private String memberNo;
+	private String shopAddress;
+	private String registerDate;
+	private double lat;
+	private double lng;
+	private int state;
+	private String status;
+
 }

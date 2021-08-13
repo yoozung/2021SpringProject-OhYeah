@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team04.restaurant.RestaurantDao">
+
+<!-- 전체회원조회
+	public List<MemberDto> selectRestaurantList(); -->
+  <select id="selectRestaurantList" resultType="com.team04.restaurant.RestaurantDto">
+  	select * from restaurant
+  </select>
+
+</mapper>
