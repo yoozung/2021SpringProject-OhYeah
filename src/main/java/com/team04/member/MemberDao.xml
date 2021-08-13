@@ -4,8 +4,8 @@
 
 <!-- 전체회원조회
 	public List<MemberDto> selectMemberList(); -->
-  <select id="selectMemberList" resultType="com.team04.member02.MemberDto02">
-  	select * from member02
+  <select id="selectMemberList" resultType="com.team04.member.MemberDto">
+  	select * from member
   </select>
 
 </mapper>

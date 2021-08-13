@@ -26,6 +26,6 @@ public interface MemberDao {
 	public MemberDto findByEmail(String email);
 	
 	/** 전체회원조회 */
-	public List<MemberDto02> selectMemberList();
+	public List<MemberDto> selectMemberList();
 	
 }

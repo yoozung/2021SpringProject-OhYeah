@@ -46,7 +46,7 @@ public class MemberService implements MemberDao {
 	}
 
 	@Override
-	public List<MemberDto02> selectMemberList() {
+	public List<MemberDto> selectMemberList() {
 		log.debug("#### 서비스테스트");
 		return memberDao.selectMemberList();
 	}

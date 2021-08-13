@@ -28,5 +28,5 @@ public class RestaurantDto {
 	private double lng;
 	private int state;
 	private String status;
-
+	
 }

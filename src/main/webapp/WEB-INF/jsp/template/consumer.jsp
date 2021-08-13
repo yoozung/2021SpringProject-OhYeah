@@ -16,13 +16,12 @@
 		<div class="row middleMenu">
 			<div class="row col-12">
 				<div class="row col-8 tab_bar">
-					<div class="col-4" onclick="go_manage();">SHOP SEARCH</div>
-					<div class="col-4" onclick="go_manage();">MAP</div>
-					<div class="col-4 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">WAIT</div>
+					<div class="col-4 tab_line" onclick="go_manage();">SHOP SEARCH</div>
+					<div class="col-4 tab_line" onclick="map();">MAP</div>
+					<div class="col-4 tab_line dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">WAIT</div>
 					<div class="dropdown-menu">
-						<a class="dropdown-item" href="/admin/adminMemberList">대기조회</a>
+						<a class="dropdown-item" href="#">대기조회</a>
 						<a class="dropdown-item" href="#">대기변경</a>
-						
 					</div>
 				</div>
 			</div>
