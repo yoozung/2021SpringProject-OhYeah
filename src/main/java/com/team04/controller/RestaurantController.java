@@ -21,18 +21,18 @@ public class RestaurantController {
 	@Autowired
 	public RestaurantService restaurantService;
 	
-	@RequestMapping("/registerForm")
+	@RequestMapping("/restaurant/registerForm")
 	public String esigterForm() {
-		return "registerForm";
+		return "/Restaurant/registerForm";
 	}
 	
-	@RequestMapping("/shopList")
+	@RequestMapping("/restaurant/shopList")
 	public String shopList(Model model, HttpSession session) {
 		// 요청에 대한 사용자 인증 및 권한 체킹 부분이 누락
 		// 인증여부 체크
 		if(session.getAttribute("shopNo") == null || session.getAttribute("dto") == null) {
 			model.addAttribute("message", "로그인 인증 후 이용하시기 바랍니다.");
-			return "shopList";
+			return "/Restaurant/shopList";
 		}
 		
 		List<RestaurantDto> list = restaurantService.selectRestaurantList();
