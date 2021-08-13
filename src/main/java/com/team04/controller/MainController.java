@@ -5,8 +5,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.team04.member.MemberDto;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -26,10 +30,10 @@ public class MainController {
 //		session.setAttribute("userName", req.getRemoteUser());
 		return "main";
 	}
-	@GetMapping("/maptest")
-	public String testpage2() {
-		return "/maptest";
-	}
+//	@GetMapping("/maptest")
+//	public String testpage2() {
+//		return "/maptest";
+//	}
 
 	
 	@GetMapping("/adminTemplate")
@@ -47,4 +51,9 @@ public class MainController {
 		return "/template/owner";
 	}
 	
+	/** 템플릿통합 */
+	@RequestMapping("/all")
+	public String all() {
+		return "/template/all";
+	}
 }

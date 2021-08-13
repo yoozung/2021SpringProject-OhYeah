@@ -7,5 +7,13 @@ function go_manage(){
 }
 
 function map() {
+<<<<<<< HEAD
 	location.href = '/maptest';
 }
+=======
+	location.href = '/test1115';
+}
+
+
+
+>>>>>>> branch 'main' of https://github.com/2021PlayDataWebCourseTeam4/Project02.git

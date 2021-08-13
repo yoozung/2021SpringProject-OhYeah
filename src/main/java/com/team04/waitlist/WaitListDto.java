@@ -14,12 +14,12 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class WaitListDto {
-	private int waitNo;
+	private String waitNo;
 	private String waitName;
 	private int headCount;
 	private String waitMobile;
 	private String shopName;
 	private String shopNo;
-	private String waitDate;
-	private String waitState;
+	private Date waitDate;
+	private String waitStatus;
 }
