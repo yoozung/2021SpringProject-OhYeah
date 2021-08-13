@@ -11,51 +11,25 @@
 <title>MAIN</title>
 </head>
 <body>
-<<<<<<< HEAD
-	<%@ include file="Fragment/inc/topBefore.jsp"%>
-	<div class="container admin">
-=======
 <%@ include file="Fragment/inc/topBefore.jsp" %>
 <!-- start middle menu-->
 	<div class="container consumer">
->>>>>>> branch 'main' of https://github.com/2021PlayDataWebCourseTeam4/Project02.git
+
 		<div class="row middleMenu">
 			<div class="row col-12">
 				<div class="row col-8 tab_bar">
-<<<<<<< HEAD
-					<div class="col-6" onclick="">SEARCH</div>
-					<div class="col-6" onclick="map();">MAP</div>
-=======
 					<div class="col-6 tab_line" onclick="#">SHOP SEARCH</div>
 					<div class="col-6 tab_line" onclick="map();">MAP</div>
 					</div>
->>>>>>> branch 'main' of https://github.com/2021PlayDataWebCourseTeam4/Project02.git
 				</div>
 			</div>
 		</div>
 	</div>
-<<<<<<< HEAD
 	<%@ include file="Fragment/inc/carousel.jsp"%>
 	<%@ include file="Fragment/inc/footer.jsp"%>
-=======
 <!-- end middle menu-->
-<%@ include file="Fragment/inc/carousel.jsp" %>
-
-		<div class="col-9">
-			내용은 여기에 작성
-			<c:choose>
-	<c:when test="${empty userName}">
-		<h1>WELCOME <c:out value="Guest"/> !!</h1>
-	</c:when>
-	<c:when test="${not empty userName}">
-		<h1>WELCOME <c:out value="${userName}"/> !!</h1>
-		<h3>Credential: <c:out value="${authorities}"/></h3>
-	</c:when>
-</c:choose>
-		</div>
-
+<%@ include file="Fragment/inc/carousel.jsp" %>	
 <%@ include file="Fragment/inc/footer.jsp"%>
->>>>>>> branch 'main' of https://github.com/2021PlayDataWebCourseTeam4/Project02.git
 </body>
 <script type="text/javascript" src="/resource/js/common.js"></script>
 </html>

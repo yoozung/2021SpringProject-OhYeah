@@ -40,4 +40,14 @@ public class RestaurantController {
 		model.addAttribute("list", list);
 		return "shopList";
 	}
+	
+	@RequestMapping("/test1115")
+	public String restaurantList(Model model) {
+		log.debug(">>>> Called restaurantList");
+		List<RestaurantDto> list = restaurantService.selectRestaurantList();
+		log.debug("#### 컨트롤러테스트");
+		model.addAttribute("list", list);
+		log.debug("#### 컨트롤러리턴테스트");
+		return "/maptest";
+	}
 }

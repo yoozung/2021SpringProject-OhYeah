@@ -26,11 +26,11 @@ public class MainController {
 //		session.setAttribute("userName", req.getRemoteUser());
 		return "main";
 	}
-	
 	@GetMapping("/maptest")
 	public String testpage2() {
 		return "/maptest";
 	}
+
 	
 	@GetMapping("/adminTemplate")
 	public String adminTemplate() {
