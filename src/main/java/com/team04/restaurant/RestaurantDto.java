@@ -14,6 +14,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class RestaurantDto {
+	
 	private String shopNo;
 	private String shopName;
 	private String shopMobile;
@@ -27,6 +28,5 @@ public class RestaurantDto {
 	private double lng;
 	private int state;
 	private String status;
-
 	
 }

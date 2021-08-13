@@ -8,7 +8,8 @@ import org.apache.ibatis.annotations.Mapper;
 public interface RestaurantDao {
 
 	/** 전체목록조회*/
-	public List<RestaurantDto> selectrestaurantList();
+	public List<RestaurantDto> selectRestaurantList();
+	
 	
 	/** 상세목록조회*/
 	public RestaurantDto selectRestaurant(String shopNo);

@@ -34,10 +34,20 @@ public class RestaurantController {
 			model.addAttribute("message", "로그인 인증 후 이용하시기 바랍니다.");
 			return "shopList";
 		}
-		
 		List<RestaurantDto> list = restaurantService.selectRestaurantList();
 		log.info("RestaurantList: " + list.size());
 		model.addAttribute("list", list);
 		return "shopList";
 	}
+	
+	@RequestMapping("/test1115")
+	public String restaurantList(Model model) {
+		log.debug(">>>> Called restaurantList");
+		List<RestaurantDto> list = restaurantService.selectRestaurantList();
+		log.debug("#### 컨트롤러테스트");
+		model.addAttribute("list", list);
+		log.debug("#### 컨트롤러리턴테스트");
+		return "/maptest";
+	}
 }
+

@@ -20,7 +20,6 @@
 				<div class="row col-8 tab_bar">
 					<div class="col-6 tab_line" onclick="#">SHOP SEARCH</div>
 					<div class="col-6 tab_line" onclick="map();">MAP</div>
-					</div>
 				</div>
 			</div>
 		</div>

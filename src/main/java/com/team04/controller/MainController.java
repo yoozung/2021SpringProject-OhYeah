@@ -33,10 +33,10 @@ public class MainController {
 		return "AfterMain";
 	}
 	
-	@GetMapping("/test1115")
-	public String testpage2() {
-		return "/maptest";
-	}
+//	@GetMapping("/test1115")
+//	public String testpage2() {
+//		return "/maptest";
+//	}
 	
 	@GetMapping("/adminTemplate")
 	public String adminTemplate() {
