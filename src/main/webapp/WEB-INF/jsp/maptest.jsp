@@ -5,12 +5,26 @@
 <head>
 <meta charset="utf-8">
 <title>예약가능한 식당 찾기</title>
+<link type="text/css" rel="stylesheet" href="/resource/css/inc.css">
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="/jquery-1.10.1.min.js"></script>
 <!-- 사용한 지도 Client ID : 은 xxxxx "localhost" 에서 테스트 용도로 사용할 수 있습니다. -->
 <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=q95pq98e92&submodules=geocoder"></script>
 </head>
+<c:set var="userName" value="${member.getName()}"/>
+<c:set var="authorities" value="${member.getRole()}"/>
 <body>
+<%@ include file="Fragment/inc/topBefore.jsp" %>
+<div class="container admin">
+		<div class="row middleMenu">		
+			<div class="row col-12">
+				<div class="row col-8 tab_bar">
+					<div class="col-6" onclick="">SEARCH</div>
+					<div class="col-6" onclick="map();">MAP</div>
+				</div>
+			</div>
+		</div>
+	</div>
 <!-- 지도가 생성되는 div 영역, id 는 naverMap 으로 설정 -->
 <div id="map" style="margin:0 auto; width:1000px; max-width:100%; height:650px;"></div>
 <div style="text-align:center; margin-top:10px;">
@@ -248,6 +262,7 @@ naver.maps.Event.addListener(marker, "click", function(e) {
     }
 });
 </script>
+<script type="text/javascript" src="/resource/js/common.js"></script>
 <script type="text/javascript" src="/resource/js/maptest.js"></script>
 </body>
 </html>

@@ -32,4 +32,19 @@ public class MainController {
 		return "/maptest";
 	}
 	
+	@GetMapping("/adminTemplate")
+	public String adminTemplate() {
+		return "/template/admin";
+	}
+	
+	@GetMapping("/consumerTemplate")
+	public String consumerTemplate() {
+		return "/template/consumer";
+	}
+	
+	@GetMapping("/ownerTemplate")
+	public String ownerTemplate() {
+		return "/template/owner";
+	}
+	
 }

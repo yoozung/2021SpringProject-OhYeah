@@ -16,6 +16,14 @@ public class WebMvcConfig implements WebMvcConfigurer {
 	@Qualifier("needToAdminInterceptor")
 	HandlerInterceptor needToAdminInterceptor;
 	
+	@Autowired
+	@Qualifier("needToConsumerInterceptor")
+	HandlerInterceptor needToConsumerInterceptor;
+	
+	@Autowired
+	@Qualifier("needToOwnerInterceptor")
+	HandlerInterceptor needToOwnerInterceptor;
+	
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(new BeforeActionInterceptor())
@@ -25,7 +33,16 @@ public class WebMvcConfig implements WebMvcConfigurer {
 		 * ROLE_ADMIN 권한이 필요한 서비스
 		 */
 		registry.addInterceptor(needToAdminInterceptor)
+			.addPathPatterns("/adminTemplate")
 			.addPathPatterns("/admin/adminMemberList");
+			
+		
+		/**
+		 * ROLE_CONSUMER 권한이 필요한 서비스
+		 */
+		registry.addInterceptor(needToConsumerInterceptor)
+			.addPathPatterns("/consumerTemplate");
+		
 	}
 	
 }
