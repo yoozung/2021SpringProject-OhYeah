@@ -2,6 +2,7 @@ package com.team04.controller;
 
 import java.util.List;
 
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ public class RestaurantController {
 	public RestaurantService restaurantService;
 	
 	@RequestMapping("/restaurant/registerForm")
-	public String esigterForm() {
+	public String callResigterForm() {
 		return "/Restaurant/registerForm";
 	}
 	
@@ -33,8 +34,7 @@ public class RestaurantController {
 		if(session.getAttribute("shopNo") == null || session.getAttribute("dto") == null) {
 			model.addAttribute("message", "로그인 인증 후 이용하시기 바랍니다.");
 			return "/Restaurant/shopList";
-		}
-		
+		}		
 		List<RestaurantDto> list = restaurantService.selectRestaurantList();
 		log.info("RestaurantList: " + list.size());
 		model.addAttribute("list", list);
@@ -42,7 +42,7 @@ public class RestaurantController {
 	}
 	
 	@RequestMapping("/map/mapFormList")
-	public String restaurantList(Model model) {
+	public String restaurantList(Model model, ServletRequest req) {
 		log.debug(">>>> Called restaurantList");
 		List<RestaurantDto> list = restaurantService.selectRestaurantList();
 		log.debug("#### 컨트롤러테스트");

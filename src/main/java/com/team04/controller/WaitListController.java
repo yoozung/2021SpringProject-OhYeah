@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
@@ -18,7 +19,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.team04.member.MemberDto;
 import com.team04.waitlist.WaitListDto;
 import com.team04.waitlist.WaitListService;
 
@@ -33,43 +33,49 @@ public class WaitListController {
 	
 	@GetMapping("/waitList/getLineForm")
 	public String getLineForm(HttpServletRequest req, HttpServletResponse res) throws IOException {
-		return ("/WaitList/WaitListForm");
+		return "/WaitList/WaitListForm";
 		
+	}
+	
+	@GetMapping("/waitListRequestTest")
+	public String test() {
+		 waitListService.requestLine("000252127", "박민재", 1, "01050435150", "식당1", "shop05", "2021-08-15T06:7:30", "Request");
+		 return "/";
 	}
 	
 	@PostMapping("/waitList/getLineAction")
 	public void getLineAction(
-			HttpServletRequest req, HttpServletResponse res,
-			@RequestParam("count") int headCount) throws Exception {
-		String username = (String) req.getAttribute("username"); // can't load VALUE IS NULL
-//		MemberDto dto =  (MemberDto) req.getAttribute("member"); // can't load VALUE IS NULL
-//		String waitMobile = dto.getMobile();
-		String waitMobile = "01012340001";
+			@RequestParam("shopName") String shopName, @RequestParam("shopNo") String shopNo,
+			@RequestParam("waitName") String waitName, @RequestParam("waitMobile") String waitMobile,
+			@RequestParam("headCount") int headCount,
+			HttpServletRequest req, HttpServletResponse res) throws Exception {
+		log.debug(
+				shopName + ", "  + shopNo + ", "  +  waitName + ", " +
+				waitMobile + ", "  + headCount
+		);
 		
-		LocalDateTime currentDateTime = LocalDateTime.now(ZoneId.of("Asia/Seoul"));
-		DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE_TIME;
-		String time = currentDateTime.format(formatter);
+		LocalDateTime currentDateTime = LocalDateTime.now();
+		DateTimeFormatter f = DateTimeFormatter.ISO_DATE_TIME;
 		
-		int waitNo = waitListService.selectMyWaitList(username).size()+1;
-		String restaurantName = "ToKkijung";
-		String restaurantNum = "5028610105";
-//		int waitNo = 2;
-		String waitDate = time;
-		String waitState = "REQUEST";
-		int i = 13;
-		
-		if(waitListService.requestLine(i, "user02", headCount, waitMobile, restaurantName, restaurantNum, waitDate, waitState) == 1) {
-			res.setContentType("text/html; charset=utf-8");
-			PrintWriter out = res.getWriter();
-			out.append("<script>");
-			out.append("alert('회원가입이 완료되었습니다.\n메인페이지로 이동합니다.');");
-			out.append("</script>");
-			i++;
-			res.sendRedirect("/main");
-		} else {
-			
+		String random = "";
+		for(int i = 0; i < 10; i++) {
+			random += Integer.toString((int) (Math.random()*9));
 		}
 		
+		
+		String waitNo = random;
+		String waitDate = currentDateTime.format(f);
+		String waitState = "Request";
+		
+		
+		 waitListService.requestLine(waitNo, waitName, headCount, waitMobile, shopName, shopNo, waitDate, waitState);
+		
+		res.setContentType("text/html");
+		res.setCharacterEncoding("UTF-8");
+		PrintWriter out = res.getWriter();
+		out.println("<script> alert('신청이 완료되었습니다.'); </script>");
+		out.println("<script> window.close(); </script>");
+		out.flush();
 	}
 	
 	

@@ -19,7 +19,7 @@ public class WaitListService implements WaitListDao {
 	}
 
 	@Override
-	public int requestLine(int waitNo, String username, int headCount, String waitMobile, String shopName, String shopNo, String waitDate, String waitState) {
+	public int requestLine(String waitNo, String username, int headCount, String waitMobile, String shopName, String shopNo, String waitDate, String waitState) {
 		return waitListDao.requestLine(waitNo, username, headCount, waitMobile, shopName, shopNo, waitDate, waitState);
 		
 	}

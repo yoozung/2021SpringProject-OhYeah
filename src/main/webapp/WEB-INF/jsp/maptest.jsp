@@ -9,25 +9,12 @@
 <script src="/jquery-1.10.1.min.js"></script>
 <!-- 사용한 지도 Client ID : 은 xxxxx "localhost" 에서 테스트 용도로 사용할 수 있습니다. -->
 <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=q95pq98e92&submodules=geocoder"></script>
-<link type="text/css" rel="stylesheet" href="/resource/css/inc.css">
+<link type="text/css" rel="stylesheet" href="/resource/css/RestaurantMap/RestaurantMap.css">
 </head>
 <c:set var="userName" value="${member.getName()}"/>
 <c:set var="authorities" value="${member.getRole()}"/>
 <body>
 <%@ include file="Fragment/inc/topBefore.jsp" %>
-<!-- start middle menu-->
-	<div class="container consumer">
-		<div class="row middleMenu">
-			<div class="row col-12">
-				<div class="row col-8 tab_bar">
-					<div class="col-6 tab_line" onclick="#">SHOP SEARCH</div>
-					<div class="col-6 tab_line" onclick="map();">MAP</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-<!-- end middle menu-->
 <!-- 지도가 생성되는 div 영역, id 는 naverMap 으로 설정 -->
 <div id="map" style="margin:0 auto; width:1000px; max-width:100%; height:650px;"></div>
 
@@ -81,11 +68,14 @@ function CustomMarker(lat, lng, shopNo, shopName, state, shopMobile, shopCategor
 	//상태 : 혼잡 (빨강)
 	if(state == 3)
 	{
-		console.log("state3");
-		contents_html =	'<div style="padding-top:5px;padding-bottom:5px;padding-left:5px;padding-right:5px;background-color:#b12121; color:white; text-align:center;border:1px solid #831616; border-radius:14px; opacity:75%" onmouseover="javascript:overshop(\''+shopNo+'\');" onmouseout="javascript:outshop(\''+shopNo+'\');">' +
-        '<div style="font-weight: bold; font-size:14px"> '+shopName+' </div>' +
-        '<div style="font-weight: normal; font-size:13px; margin-top:3px; display:none" id="'+shopNo+'"> '+shopMobile+'<br/>'+shopCategory+'</div>' + '<div><input type="submit" onclick="openWaitList()" value="대기"></div>'+
-        '</div>';	
+		contents_html =	
+			'<form name="callGetLine">'+
+			'<div style="padding-top:5px;padding-bottom:5px;padding-left:5px;padding-right:5px;background-color:#b12121; color:white; text-align:center;border:1px solid #831616; border-radius:14px; opacity:75%" onmouseover="javascript:overshop(\''+shopNo+'\');" onmouseout="javascript:outshop(\''+shopNo+'\');">' +
+       		'<div class="shopInfo" style="font-weight: bold; font-size:14px"> '+shopName+' </div>' +
+       		'<div class="shopinfo infoNoShow">'+shopNo+'</div>'+
+        	'<div class="shopInfo" id="'+shopNo+'" style="font-weight: normal; font-size:13px; margin-top:3px; display:none"> '+shopMobile+'<br/>'+shopCategory+'</div>' + 
+        	'<div><input type="submit" onclick="openWaitList(event)" value="대기"></div>'+
+        	'</div></form>';	
 	}
 	
 	// 상태 : 보통 (노랑)

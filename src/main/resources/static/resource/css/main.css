@@ -5,8 +5,14 @@ body {
     margin: 0;
     padding: 0;
 }
-.mainSector1 {
-    padding: 0;
+
+.content {
+    width: 100%;
+    overflow-x: scroll;
+}
+
+.navbar {
+    height: 86px;
 }
 
 .nav-logo {
@@ -41,6 +47,7 @@ body {
 }
 
 .mainSector1 {
+	padding: 0;
     width: 80%;
     height: 500px;
     background-color: cadetblue;

@@ -13,7 +13,7 @@ public interface WaitListDao {
 	public List<WaitListDto> selectMyWaitList(String username);
 	
 	@Insert("INSERT INTO waitlist VALUES(#{waitNo}, #{waitName}, #{headCount}, #{waitMobile}, #{shopName}, #{shopNo}, #{waitDate}, #{waitState})")
-	public int requestLine(int waitNo, String waitName, int headCount, String waitMobile, String shopName, String shopNo, String waitDate, String waitState);
+	public int requestLine(String waitNo, String waitName, int headCount, String waitMobile, String shopName, String shopNo, String waitDate, String waitState);
 
 	
 }

@@ -102,7 +102,7 @@ public class MemberController {
 		} else {			
 			log.debug(">>>> SignIn Failed");
 			session.setAttribute("status", "fail");
-			res.sendRedirect("/signInPage");
+			res.sendRedirect("/error");
 //			return "/SignInPage";
 		}
 	}

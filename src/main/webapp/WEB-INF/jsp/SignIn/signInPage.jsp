@@ -23,7 +23,7 @@
 				</div>
 				<div class="row blank signInfo">
 					<div class="col-12">
-						<a href="#">아이디 찾기</a> <a href="#">비밀번호 찾기</a> <a href="#">회원가입</a>
+						<a href="#">아이디 찾기</a> <a href="#">비밀번호 찾기</a> <a href="/signUpPage">회원가입</a>
 					</div>
 				</div>
 				<div class="row form">

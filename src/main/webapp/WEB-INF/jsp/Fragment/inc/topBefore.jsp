@@ -13,7 +13,7 @@
     <c:if test="${authorities eq null}">
     <ul class="navbar-nav menu-nav">
       <li class="nav-item">
-        <a class="nav-link" href="map()">식당 지도</a>
+        <a class="nav-link" href="/map/mapFormList">식당 지도</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">식당 목록</a>
@@ -23,7 +23,7 @@
     <c:if test="${authorities eq 'ROLE_CONSUMER'}">
     <ul class="navbar-nav menu-nav">
       <li class="nav-item">
-        <a class="nav-link" href="map()">식당 지도</a>
+        <a class="nav-link" href="/map/mapFormList">식당 지도</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">식당 목록</a>
