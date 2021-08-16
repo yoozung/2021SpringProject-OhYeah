@@ -22,8 +22,8 @@
 						<div class="dropdown-menu">
 							<a class="dropdown-item" href="/admin/adminShopAccept">등록신청관리</a>
 							<a class="dropdown-item" href="/admin/adminShopList">식당조회</a>
-							<a class="dropdown-item" href="/admin/adminShopList">수정관리</a>
-							<a class="dropdown-item" href="/admin/adminShopList">삭제관리</a>
+							<a class="dropdown-item" href="/admin/adminShopUpdate">수정관리</a>
+							<a class="dropdown-item" href="/admin/adminShopDrop">삭제관리</a>
 						</div>
 					</div>
 					<div class="col-6 asd2 tab_line">
@@ -40,7 +40,8 @@
 <!-- end middle menu-->
 <div class="container adminMemberDrop">
 <h4>Member Drop</h4>
-<form action="#" method="post" name="selectForm" id="selectForm">
+
+<form action="/memberDrop" method="post" name="selectForm" id="selectForm">
 <input type="submit" value="전체선택" id="btn-all" onclick="checkAll()">
 <input type="reset" value="전체취소" id="btn-all" onclick="clearAll()">
 <table>
@@ -70,14 +71,14 @@
 			</th>
 			<th>${dto.mobile}</th>
 			<th>${dto.entryDate}</th>
-			<th><input type="checkbox" id="email">${dto.email}</th>
+			<th><input type="checkbox" id="email" value="${dto.email}">${dto.email}</th>
 		</tr>
 	</c:forEach>
 </table>
 
 
 <input type="button" value="회원삭제" id="btn" />
-<input type="reset" value="취소"  id="btn" class="choose" onclick="">
+<input type="reset" value="취소"  id="btn" class="choose" onclick="" />
 </form>
 </div>
 <%@ include file="../Fragment/inc/footer.jsp"%>

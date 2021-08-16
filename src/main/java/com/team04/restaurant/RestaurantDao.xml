@@ -5,14 +5,32 @@
 
 <!-- 전체회원조회
 	public List<MemberDto> selectRestaurantList(); -->
-  <select id="selectRestaurantList" resultType="com.team04.restaurant.RestaurantDto">
-  	select * from restaurant
-  </select>
+	<select id="selectRestaurantList" resultType="com.team04.restaurant.RestaurantDto">
+  		select * from restaurant
+	</select>
 
 
 <!-- public List<RestaurantDto> selectShopList();  -->
-  <select id="selectShopList" resultType="com.team04.restaurant.RestaurantDto">
-	select * from restaurant
-  </select>
+	<select id="selectShopList" resultType="com.team04.restaurant.RestaurantDto">
+		select * from restaurant
+	</select>
 
+<!-- 사업자 식당조회 public List<RestaurantDto> ownerShopList(String memberNo); -->
+	<select id="ownerShopList" parameterType="String" resultType="map">
+		select * from restaurant where memberNo = #{memberNo} 
+	</select>
+	
+	<!-- 사업자 식당 등록  public int insertShop(RestaurantDto dto); -->
+	<insert id="insertShop" parameterType= "com.team04.restaurant.RestaurantDto">
+		insert into restaurant
+		values(#{shopNo}, #{shopName}, #{shopMobile}, #{shopSite}, #{shopCategory}, #{shopSeat}, #{memberNo},
+		#{shopAddress}, #{registerDate}, #{lat}, #{lng}, #{state}, #{status})
+	</insert>
+	
+	<!-- 사업자 식당 변경 첫화면  public RestaurantDto ownerShopUpdate(String shopNo); 
+	<select id="ownerShopUpdate" parameterType= "String" resultType="com.team04.restaurant.RestaurantDto">
+		select * from restaurant where shopNo=#{shopNo}
+	</select>-->
+	
+	
 </mapper>

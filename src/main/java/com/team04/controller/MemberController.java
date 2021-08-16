@@ -172,6 +172,12 @@ public class MemberController {
 	public String callMyEditAction() {
 		return "";
 	}
+	
+	/**
+	 * 관리자 회원 목록 조회
+	 * @param model
+	 * @return adminMemberList.jsp
+	 */
 	@RequestMapping("/admin/adminMemberList")
 	public String adminMemberList(Model model) {
 		List<MemberDto> list = memberService.selectMemberList();
@@ -179,6 +185,11 @@ public class MemberController {
 		return "admin/adminMemberList";
 	}
 	
+	/**
+	 * 관리자 회원 삭제 화면
+	 * @param model
+	 * @return adminMemberDrop.jsp
+	 */
 	@RequestMapping("/admin/adminMemberDrop")
 	public String adminMemberDrop(Model model) {
 		List<MemberDto> list = memberService.selectMemberList();
@@ -186,11 +197,17 @@ public class MemberController {
 		model.addAttribute("list", list);
 		return "admin/adminMemberDrop";
 	}
-
-	@RequestMapping("/admin/adminShopAccept")
-	public String adminShopAccept() {
-		return "admin/adminShopAccept";
+	
+	/**
+	 * 관리자 회원 삭제 구동
+	 * @param model
+	 * @return adminMemberList.jsp
+	 */
+	@RequestMapping("/memberDrop")
+	public String memberDrop(Model model) {
+		return "admin/adminMemberList";
 	}
+
 
 	
 }

@@ -23,8 +23,8 @@
 						<div class="dropdown-menu">
 							<a class="dropdown-item" href="/admin/adminShopAccept">등록신청관리</a>
 							<a class="dropdown-item" href="/admin/adminShopList">식당조회</a>
-							<a class="dropdown-item" href="/admin/adminShopList">수정관리</a>
-							<a class="dropdown-item" href="/admin/adminShopList">삭제관리</a>
+							<a class="dropdown-item" href="/admin/adminShopUpdate">수정관리</a>
+							<a class="dropdown-item" href="/admin/adminShopDrop">삭제관리</a>
 						</div>
 					</div>
 					<div class="col-6 asd2 tab_line">
