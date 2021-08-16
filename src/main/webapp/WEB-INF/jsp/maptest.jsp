@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ include file="Fragment/TagLib/Taglib.jsp" %>
 <!doctype html>
 <html lang="ko">
@@ -9,11 +10,10 @@
 <script src="/jquery-1.10.1.min.js"></script>
 <!-- 사용한 지도 Client ID : 은 xxxxx "localhost" 에서 테스트 용도로 사용할 수 있습니다. -->
 <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=q95pq98e92&submodules=geocoder"></script>
+<script src="/resource/js/MarkerClustering.js"></script>
 <link type="text/css" rel="stylesheet" href="/resource/css/RestaurantMap/RestaurantMap.css">
 </head>
-<c:set var="userName" value="${member.getName()}"/>
-<c:set var="authorities" value="${member.getRole()}"/>
-<body>
+
 <%@ include file="Fragment/inc/topBefore.jsp" %>
 <!-- 지도가 생성되는 div 영역, id 는 naverMap 으로 설정 -->
 <div id="map" style="margin:0 auto; width:1000px; max-width:100%; height:650px;"></div>
@@ -32,13 +32,28 @@
 </c:forEach>
 </div>
 -->
+
+<body>
+	<div style="margin:0 auto; width:1000px; max-width:100%; height:650px;">
+		<input type=radio name="radioShopState" id="radioShopState1" value="4" onclick="javascript:sortingMapByShopState(this.value)"><label for="radioShopState1">전체</label>
+		<input type=radio name="radioShopState" id="radioShopState2" value="1" onclick="javascript:sortingMapByShopState(this.value)"><label for="radioShopState2">원활</label>
+		<input type=radio name="radioShopState" id="radioShopState3" value="2" onclick="javascript:sortingMapByShopState(this.value)"><label for="radioShopState3">보통</label>
+		<input type=radio name="radioShopState" id="radioShopState4" value="3" onclick="javascript:sortingMapByShopState(this.value)"><label for="radioShopState4">혼잡</label>
+	</div>
 <%@ include file="Fragment/inc/footer.jsp"%>
 </body>
 <script>
 var curtBtn ='<img src="/resource/img/CurrentLocationButton.png" alt="현재위치로 이동">';
-/* var curtLocation = { "lat": "37.5147509", "lng": "127.1003536" }; */
 var curtLocation = "";
+
+/**
 var CityHall = new naver.maps.LatLng(37.566465, 126.977924);
+var marker = new naver.maps.Marker({
+	position: CityHall,
+	map: map,
+	// icon: {url: "/resource/img/SampleshopLocation.png"}
+});
+**/
 
 
 var mapOptions = {
@@ -53,13 +68,47 @@ var mapOptions = {
 
 var map = new naver.maps.Map('map',mapOptions);
 
-var marker = new naver.maps.Marker({
-	position: CityHall,
-	map: map,
-	// icon: {url: "/resource/img/SampleshopLocation.png"}
-});
+// 여러 markers 변수선언
+var markers = [];
 
 
+function sortingMapByShopState(state)
+{
+	console.log(state);
+	//할당된 Markers
+	var newMarkers = [];
+	for(var i=0; i < markers.length; i++)
+	{
+		markers[i].setMap(null);
+	}
+	// 전체
+	if(state >= 4)
+	{
+		for(var i=0; i < markers.length; i++)
+		{
+			markers[i].setMap(map);
+			newMarkers.push(markers[i]);
+		}
+	}
+	// 나머지 (혼잡: 3, 보통: 2, 원활: 1)
+	else
+	{
+		for(var i=0; i < markers.length; i++)
+		{
+			if(state == markers[i].state)
+			{
+				markers[i].setMap(map);
+				newMarkers.push(markers[i]);
+			}
+			else
+			{
+				markers[i].setMap(null);
+			}
+		}
+	}
+	markerCluster(newMarkers);
+	map.setZoom(4);
+}
 
 function CustomMarker(lat, lng, shopNo, shopName, state, shopMobile, shopCategory) {
 	//심각성 : 1
@@ -119,9 +168,65 @@ function CustomMarker(lat, lng, shopNo, shopName, state, shopMobile, shopCategor
 	return marker;
 }
 
-<c:forEach var="item" items="${list}" varStatus="idx">
-var marker = CustomMarker(${item.lat}, ${item.lng}, "${item.shopNo}", "${item.shopName}", ${item.state}, "${item.shopMobile}", "${item.shopCategory}");
- </c:forEach>
+// Marker 찍기
+function loadShopMarker()
+{
+	<c:forEach var="item" items="${list}" varStatus="idx">
+	var marker = CustomMarker(${item.lat}, ${item.lng}, "${item.shopNo}", "${item.shopName}", ${item.state}, "${item.shopMobile}", "${item.shopCategory}");
+	markers.push(marker);
+	 </c:forEach>
+	 return markers;
+}
+
+// MarkerCluster 
+function markerCluster(applyMarker) 
+{
+	var htmlMarker1 = {
+			content: '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(https://navermaps.github.io/maps.js.ncp/docs/img/cluster-marker-1.png);background-size:contain;"></div>',
+			size: N.Size(40, 40),
+			anchor: N.Point(20, 20)
+		},
+		htmlMarker2 = {
+			content: '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(https://navermaps.github.io/maps.js.ncp/docs/img/cluster-marker-2.png);background-size:contain;"></div>',
+			size: N.Size(40, 40),
+			anchor: N.Point(20, 20)
+		},
+		htmlMarker3 = {
+			content: '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(https://navermaps.github.io/maps.js.ncp/docs/img/cluster-marker-3.png);background-size:contain;"></div>',
+			size: N.Size(40, 40),
+			anchor: N.Point(20, 20)
+		},
+		htmlMarker4 = {
+			content: '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(https://navermaps.github.io/maps.js.ncp/docs/img/cluster-marker-4.png);background-size:contain;"></div>',
+			size: N.Size(40, 40),
+			anchor: N.Point(20, 20)
+		},
+		htmlMarker5 = {
+			content: '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(https://navermaps.github.io/maps.js.ncp/docs/img/cluster-marker-5.png);background-size:contain;"></div>',
+			size: N.Size(40, 40),
+			anchor: N.Point(20, 20)
+		};
+	    
+	 var markerClustering = new MarkerClustering({
+	        minClusterSize: 2,
+	        maxZoom: 8,
+	        map: map,
+	        markers: applyMarker,
+	        disableClickZoom: false,
+	        gridSize: 120,
+	        icons: [htmlMarker1, htmlMarker2, htmlMarker3, htmlMarker4, htmlMarker5],
+	        indexGenerator: [10, 100, 200, 500, 1000],
+	        stylingFunction: function(clusterMarker, count) {
+	            $(clusterMarker.getElement()).find('div:first-child').text(count);
+	        }
+	    });	
+}
+
+$(document).ready(function(){
+	var tmpMarkers = loadShopMarker();
+	markerCluster(tmpMarkers);
+});
+
 
 function overshop(childID)
 {

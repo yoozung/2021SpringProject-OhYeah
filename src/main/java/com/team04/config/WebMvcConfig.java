@@ -27,7 +27,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(new BeforeActionInterceptor())
-		.excludePathPatterns("/error", "/", "/main", "/resource/**", "/signInPage", "/signInPage/SignIn", "/map/mapFormList", "/signUpPage/SignUp", "/**");
+		.excludePathPatterns("/error", "/", "/main", "/resource/**", "/signInPage", "/signInPage/SignIn", "/map/mapFormList", "/signUpPage/SignUp", "/maptest", "/**");
 		
 		/**
 		 * ROLE_ADMIN 권한이 필요한 서비스

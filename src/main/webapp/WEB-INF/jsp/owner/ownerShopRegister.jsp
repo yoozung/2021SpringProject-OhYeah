@@ -19,6 +19,7 @@
 		<input type="text" name="shopCategory" required="required" placeholder="분류" />
 		<input type="text" name="shopSeat" required="required" placeholder="좌석수"/>
 		<input type="text" name="shopAddress" required="required" placeholder="가게 주소"/>
+		<input type="text" name="businessNo" required="required" placeholder="사업자번호"/>
 		<input type="submit" value="등록" />
 		<input type="reset" value="취소" />
 	</form>

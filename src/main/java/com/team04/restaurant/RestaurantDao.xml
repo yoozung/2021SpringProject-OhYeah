@@ -21,16 +21,16 @@
 	</select>
 	
 	<!-- 사업자 식당 등록  public int insertShop(RestaurantDto dto); -->
-	<insert id="insertShop" parameterType= "com.team04.restaurant.RestaurantDto">
-		insert into restaurant
-		values(#{shopNo}, #{shopName}, #{shopMobile}, #{shopSite}, #{shopCategory}, #{shopSeat}, #{memberNo},
-		#{shopAddress}, #{registerDate}, #{lat}, #{lng}, #{state}, #{status})
-	</insert>
-	
-	<!-- 사업자 식당 변경 첫화면  public RestaurantDto ownerShopUpdate(String shopNo); 
-	<select id="ownerShopUpdate" parameterType= "String" resultType="com.team04.restaurant.RestaurantDto">
-		select * from restaurant where shopNo=#{shopNo}
-	</select>-->
+    <insert id="insertShop" parameterType= "com.team04.restaurant.RestaurantDto">
+        insert into restaurant
+        values(#{shopNo}, #{shopName}, #{shopMobile}, #{shopSite}, #{shopCategory}, #{shopSeat}, #{memberNo},
+        #{shopAddress}, #{businessNo}, #{registerDate}, #{lat}, #{lng}, #{state}, #{status})
+    </insert>
+    
+    <!-- 사업자 식당 변경 첫화면  public RestaurantDto ownerShopUpdate(String shopNo); 
+    <select id="ownerShopUpdate" parameterType= "String" resultType="com.team04.restaurant.RestaurantDto">
+        select * from restaurant where shopNo=#{shopNo}
+    </select>-->
 	
 	
 </mapper>
