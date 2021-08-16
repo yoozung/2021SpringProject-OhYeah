@@ -12,7 +12,8 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString(exclude= {"password"})
 public class MemberDto {
-		
+	
+	private String memberNo;
 	private String name;
 	@Setter
 	private String mobile;

@@ -23,6 +23,7 @@ public class RestaurantDto {
 	private String shopSeat;
 	private String memberNo;
 	private String shopAddress;
+	private String businessNo;
 	private String registerDate;
 	private double lat;
 	private double lng;
