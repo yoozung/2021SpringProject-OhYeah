@@ -6,21 +6,18 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
-import com.team04.member02.MemberDto02;
-
 @Mapper
 public interface MemberDao {
-	@Insert("INSERT INTO member VALUES(#{name}, #{mobile}, #{email}, #{password}, #{entryDate}, #{role}, #{enabled})")
-	public int signUp(String name, String mobile, String email, String password, String entryDate, String role, int enabled);
+	@Insert("INSERT INTO member VALUES(#{memberNo}, #{name}, #{mobile}, #{email}, #{password}, #{entryDate}, #{role}, #{enabled})")
+	public int signUp(String memberNo, String name, String mobile, String email, String password, String entryDate, String role, int enabled);
+//	@Insert("INSERT INTO member VALUES(#{memberNo}, #{name}, #{mobile}, #{email}, #{password}, #{entryDate}, #{role}, #{enabled})")
+//	public int signUp(MemberDto memberDto);
 	
 	@Select("SELECT * FROM member WHERE email=#{username} AND password=#{password}")
 	public MemberDto signIn(String username, String password);
 	
 	@Select("SELECT * FROM member WHERE name=#{username}")
-	public MemberDto findByName(String username);
-	
-	@Select("SELECT * FROM member WHERE name=#{username}")
-	public MemberDto test02(String username);
+	public MemberDto findByName(String username);	
 
 	@Select("SELECT * FROM member WHERE email=#{email}")
 	public MemberDto findByEmail(String email);

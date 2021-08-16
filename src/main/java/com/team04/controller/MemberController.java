@@ -21,8 +21,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.team04.member.MemberDto;
 import com.team04.member.MemberService;
-import com.team04.member02.MemberDto02;
-import com.team04.member.MemberDto;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -37,18 +35,40 @@ public class MemberController {
 		return "/SignIn/signUpPage";
 	}
 
+	/**
+	 * <pre>
+	 * 회원가입 메서드
+	 * </pre>
+	 * @param memberDto
+	 * @param res
+	 * @throws IOException
+	 */
 	@PostMapping("/signUpPage/SignUp")
 	public void signUpMethod(@RequestParam("name") String name, @RequestParam("mobile") String mobile,
 			@RequestParam("email") String email, @RequestParam("password") String password, @RequestParam("role") String role,
-			HttpServletResponse res)
-			throws IOException {
-
+			HttpServletResponse res) throws IOException {
+		log.debug(">>>> Called signUp Method...");
+		log.debug(">>>> INFO: " + name + " ... " + role);
+		
+		String memberNo = "";
+		if(role.equals("ROLE_CONSUMER")) {
+			memberNo += "C";
+			for(int i = 0; i < 4; i++) {
+				memberNo += Integer.toString((int) Math.round(Math.random()*9));
+			}
+		} else {
+			memberNo += "O";
+			for(int i = 0; i < 4; i++) {
+				memberNo += Integer.toString((int) Math.round(Math.random()*9));
+			}
+		}	
+		
 		LocalDateTime currentDateTime = LocalDateTime.now(ZoneId.of("Asia/Seoul"));
 		DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE_TIME;
 		String time = currentDateTime.format(formatter);
 		int enabled = 1;
 
-		if (memberService.signUp(name, mobile, email, password, time, role, enabled) == 1) {
+		if (memberService.signUp(memberNo, name, mobile, email, password, time, role, enabled) == 1) {
 			log.debug(">>>> SignUp Complete");
 			res.setContentType("text/html; charset=utf-8");
 			PrintWriter out = res.getWriter();
@@ -56,7 +76,8 @@ public class MemberController {
 			out.append("alert('회원가입이 완료되었습니다.\n메인페이지로 이동합니다.');");
 			out.append("</script>");
 			res.sendRedirect("/main");
-//			return "/main";
+			out.flush();
+//			return "redirect:/main";
 		} else {
 			log.debug(">>>> SignUp Failed");
 			res.setContentType("text/html; charset=utf-8");
@@ -65,7 +86,8 @@ public class MemberController {
 			out.append("alert('회원가입에 실패했습니다.\n다시 회원가입을 진행해주세요.');");
 			out.append("</script>");
 			res.sendRedirect("/signUpPage");
-//			return "/signUpPage";
+			out.flush();
+//			return "redirect:/signUpPage";
 		}
 	}
 
