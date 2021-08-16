@@ -16,8 +16,8 @@
 				<div class="row title">
 					<div class="col-4"></div>
 					<div class="col-4 titleLogo">
-						<span class="Coral">오</span><span>늘의</span> <br /> <span
-							class="Coral Coral2">예</span><span>약</span>
+						<!-- <span class="Coral">오</span><span>늘의</span> <br /> <span
+							class="Coral Coral2">예</span><span>약</span> -->
 					</div>
 					<div class="col-4"></div>
 				</div>

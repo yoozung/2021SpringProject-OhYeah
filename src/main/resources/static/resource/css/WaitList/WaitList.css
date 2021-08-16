@@ -4,6 +4,10 @@ td {
 	height: 40px;
 }
 
+.inVisible {
+	display: none;
+}
+
 .inputHead {
 	width: 20%;
 }

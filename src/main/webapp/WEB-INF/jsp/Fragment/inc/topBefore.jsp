@@ -33,7 +33,7 @@
       		대기조회
       	</a>
       	<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-      		<a class="dropdown-item" href="#">대기 조회</a>
+      		<a class="dropdown-item" href="/waitList/WaitListMySelect">대기 조회</a>
       		<a class="dropdown-item" href="#">대기 변경</a>
       	</div>
       </li>

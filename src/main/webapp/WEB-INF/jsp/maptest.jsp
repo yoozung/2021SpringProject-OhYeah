@@ -72,7 +72,7 @@ function CustomMarker(lat, lng, shopNo, shopName, state, shopMobile, shopCategor
 			'<form name="callGetLine">'+
 			'<div style="padding-top:5px;padding-bottom:5px;padding-left:5px;padding-right:5px;background-color:#b12121; color:white; text-align:center;border:1px solid #831616; border-radius:14px; opacity:75%" onmouseover="javascript:overshop(\''+shopNo+'\');" onmouseout="javascript:outshop(\''+shopNo+'\');">' +
        		'<div class="shopInfo" style="font-weight: bold; font-size:14px"> '+shopName+' </div>' +
-       		'<div class="shopinfo infoNoShow">'+shopNo+'</div>'+
+       		'<div class="shopInfo infoNoShow">'+shopNo+'</div>'+
         	'<div class="shopInfo" id="'+shopNo+'" style="font-weight: normal; font-size:13px; margin-top:3px; display:none"> '+shopMobile+'<br/>'+shopCategory+'</div>' + 
         	'<div><input type="submit" onclick="openWaitList(event)" value="대기"></div>'+
         	'</div></form>';	
@@ -81,18 +81,25 @@ function CustomMarker(lat, lng, shopNo, shopName, state, shopMobile, shopCategor
 	// 상태 : 보통 (노랑)
 	if(state == 2)
 	{
-		contents_html =	'<div style="padding-top:5px;padding-bottom:5px;padding-left:5px;padding-right:5px;background-color:#d3cc07; color:white; text-align:center;border:1px solid #a09b07; border-radius:14px; opacity:75%" onmouseover="javascript:overshop(\''+shopNo+'\');" onmouseout="javascript:outshop(\''+shopNo+'\');">' +
-		'<div style="font-weight: bold; font-size:14px"> '+shopName+' </div>' +
-        '<div style="font-weight: normal; font-size:13px; margin-top:3px; display:none" id="'+shopNo+'"> '+shopMobile+'<br/>'+shopCategory+'</div>' + '<div><input type="submit" onclick="openWaitList()" value="대기"></div>'+
-        '</div>';	
+		contents_html =
+		'<form name="callGetLine">'+
+		'<div style="padding-top:5px;padding-bottom:5px;padding-left:5px;padding-right:5px;background-color:#d3cc07; color:white; text-align:center;border:1px solid #a09b07; border-radius:14px; opacity:75%" onmouseover="javascript:overshop(\''+shopNo+'\');" onmouseout="javascript:outshop(\''+shopNo+'\');">' +
+		'<div class="shopInfo" style="font-weight: bold; font-size:14px"> '+shopName+' </div>' +
+		'<div class="shopInfo infoNoShow">'+shopNo+'</div>'+
+        '<div class="shopInfo" id="'+shopNo+'" style="font-weight: normal; font-size:13px; margin-top:3px; display:none"> '+shopMobile+'<br/>'+shopCategory+'</div>' + 
+        '<div><input type="submit" onclick="openWaitList(event)" value="대기"></div>'+
+        '</div></form>';	
 	}
 	
 	// 상태 : 원활 (초록)
 	if(state == 1)
 	{
-		contents_html =	'<div style="padding-top:5px;padding-bottom:5px;padding-left:5px;padding-right:5px;background-color:#43f707; color:white; text-align:center;border:1px solid #3a8c1f; border-radius:14px; opacity:75%" onmouseover="javascript:overshop(\''+shopNo+'\');" onmouseout="javascript:outshop(\''+shopNo+'\');">' +
-		'<div style="font-weight: bold; font-size:14px"> '+shopName+' </div>' +
-        '<div style="font-weight: normal; font-size:13px; margin-top:3px; display:none" id="'+shopNo+'"> '+shopMobile+'<br/>'+shopCategory+'</div>' + '<div><input type="submit" onclick="openWaitList()" value="대기"></div>'+
+		contents_html =	
+		'<div style="padding-top:5px;padding-bottom:5px;padding-left:5px;padding-right:5px;background-color:#43f707; color:white; text-align:center;border:1px solid #3a8c1f; border-radius:14px; opacity:75%" onmouseover="javascript:overshop(\''+shopNo+'\');" onmouseout="javascript:outshop(\''+shopNo+'\');">' +
+		'<div class="shopInfo" style="font-weight: bold; font-size:14px"> '+shopName+' </div>' +
+		'<div class="shopInfo infoNoShow">'+shopNo+'</div>'+
+        '<div class="shopInfo" id="'+shopNo+'" style="font-weight: normal; font-size:13px; margin-top:3px; display:none"> '+shopMobile+'<br/>'+shopCategory+'</div>' +
+        '<div><input type="submit" onclick="openWaitList(event)" value="대기"></div>'+
         '</div>';	
 	}
 	

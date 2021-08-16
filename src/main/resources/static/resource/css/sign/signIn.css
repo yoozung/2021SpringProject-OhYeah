@@ -23,6 +23,9 @@ body {
     margin-top: 20px;
     line-height: 30px;
     font-size: 30px;
+    background-image: url(/resource/img/main/logo.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
 }
 .titleLogo > .Coral {
     color: rgb(255, 126, 126);

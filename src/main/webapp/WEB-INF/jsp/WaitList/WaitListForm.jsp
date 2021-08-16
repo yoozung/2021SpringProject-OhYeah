@@ -9,7 +9,7 @@
 </head>
 <body>
 <c:set var="userName" value="${member.getName()}"/>
-<c:set var="authorities" value="${member.getRole()}"/>
+<c:set var="userMobile" value="${member.getMobile()}"/>
 <form action="/waitList/getLineAction" method="post">
 <div>
 <table class="table">
@@ -21,6 +21,14 @@
 		</tr>
 		<tr>
 			<td class="photo">
+			</td>
+		</tr>
+		<tr class="inVisible">
+			<td class="inputHead">
+				<label for="waitNo">예약 번호</label>
+			</td>
+			<td class="inputBody">
+				<input type="text"  id="waitNo" name="waitNo" value="" readonly />
 			</td>
 		</tr>
 		<tr>
@@ -44,7 +52,7 @@
 				<label for="waitName">신청자 이름</label>
 			</td>
 			<td class="inputBody">
-				<input type="text" name="waitName" value="" />
+				<input type="text" name="waitName" value="<c:out value='${userName}'/>" />
 			</td>
 		</tr>
 		<tr>
@@ -52,7 +60,7 @@
 				<label for="waitMobile">신청자 연락처</label>
 			</td>
 			<td class="inputBody">
-				<input type="text" name="waitMobile" value="" />
+				<input type="text" name="waitMobile" value="<c:out value='${userMobile}'/>" />
 			</td>
 		</tr>
 		<tr>
@@ -67,7 +75,7 @@
 </table>
 	<div class="row">
 		<div class="col-6 btn">
-			<input type="button" value="취소"/>
+			<input type="button" id="cancleBtn" value="취소"/>
 		</div>
 		<div class="col-6 btn">
 			<input type="submit" value="줄 서기"/>
