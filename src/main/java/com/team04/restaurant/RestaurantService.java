@@ -7,9 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.team04.member.MemberDao;
+import com.team04.member.MemberDto;
+import com.work.util.Utility;
 
 import lombok.extern.slf4j.Slf4j;
-
 @Service
 @Repository
 @Slf4j
@@ -36,12 +37,38 @@ public class RestaurantService implements RestaurantDao {
 		return restaurantDao.selectRestaurant(shopNo);
 	}
 	
-	//유정
+	/** 관리자식당조회 */
 	@Override
 	public List<RestaurantDto> selectShopList() {
 		return restaurantDao.selectShopList();
 	}
 
+	/** 사업자식당조회 */
+	@Override
+	public List<RestaurantDto> ownerShopList(String memberNo) {
+		log.debug("#### 서비스");
+		return restaurantDao.ownerShopList(memberNo);
+	}
+
+	/** 사업자 식당 등록 */
+	@Override
+	public int insertShop(RestaurantDto dto) {
+		dto.setShopNo("");
+		dto.setRegisterDate(Utility.getCurrentDate());
+		dto.setLat(0);
+		dto.setLng(0);
+		dto.setState(0);
+		dto.setStatus("apply");
+		int result = restaurantDao.insertShop(dto);
+		log.debug("dao result: " + result);
+		return result;
+	}
+
+	/** 사업자 식당 변경 */
+//	@Override
+//	public RestaurantDto ownerShopUpdate(String shopNo) {
+//		return restaurantDao.ownerShopUpdate(shopNo);
+//	}
 	
 
 }
