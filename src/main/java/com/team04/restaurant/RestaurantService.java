@@ -25,7 +25,6 @@ public class RestaurantService implements RestaurantDao {
 
 	@Override
 	public List<RestaurantDto> selectRestaurantList() {
-
 		log.debug("### 식당서비스테스트");
 		return restaurantDao.selectRestaurantList();
 	}
@@ -51,7 +50,12 @@ public class RestaurantService implements RestaurantDao {
 	/** 사업자 식당 등록 */
 	@Override
 	public int insertShop(RestaurantDto dto) {
-		dto.setShopNo("");
+		String shopNo = "";
+		shopNo += dto.getShopName().substring(0, 1);
+		for(int i =0; i < 5; i++) {
+			shopNo += Integer.toString((int) Math.round(Math.random()*9));
+		}
+		dto.setShopNo(shopNo);
 		dto.setRegisterDate(Utility.getCurrentDate());
 		dto.setLat(0);
 		dto.setLng(0);

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.team04.member.MemberDto;
 import com.team04.restaurant.RestaurantDto;
 import com.team04.restaurant.RestaurantService;
 
@@ -99,9 +100,9 @@ public class RestaurantController {
 	/** 사업자 식당 등록 */
 	@RequestMapping("/result")
 	public String join(RestaurantDto dto, Model model, HttpSession session) {
-		String temp = "";
+		log.debug("### dto : " + dto);
+		MemberDto member =  (MemberDto) session.getAttribute("memberNo");		
 		
-		MemberDto member =  (MemberDto) session.getAttribute("memberNo");
 		log.debug("###" + member.toString());
 		int result = restaurantService.insertShop(dto);
 		if (result == 1) {

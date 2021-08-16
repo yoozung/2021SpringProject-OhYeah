@@ -52,8 +52,8 @@ public class WaitListController {
 				
 		LocalDateTime currentDateTime = LocalDateTime.now();
 		DateTimeFormatter f = DateTimeFormatter.ISO_DATE_TIME;
-
 		String waitDate = currentDateTime.format(f);
+		
 		String waitState = "Request";
 		log.debug( waitNo + ", " +
 				shopName + ", "  + shopNo + ", "  +  waitName + ", " +
