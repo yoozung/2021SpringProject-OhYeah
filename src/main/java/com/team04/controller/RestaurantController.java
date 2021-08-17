@@ -88,6 +88,7 @@ public class RestaurantController {
         log.debug("#### 컨트롤러리턴");
         return "owner/ownerShopList";
     }
+    
     /** 사업자 식당 등록 */
     @RequestMapping("/result")
     public String join(RestaurantDto dto, Model model, HttpSession session) {
@@ -129,10 +130,14 @@ public class RestaurantController {
         log.debug("#### 컨트롤러리턴");
         return "owner/ownerShopDrop";
     }
+    
     /** 사업자 식당 삭제 구동 */
     @RequestMapping("/shopDrop")
     public String shopDrop(RestaurantDto dto, Model model) {
         return "/owner/ownerShopRegister";
     }
+    
+    
+    
 	
 }

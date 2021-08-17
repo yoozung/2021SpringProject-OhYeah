@@ -46,12 +46,15 @@
       		가게 관리
       	</a>
       	<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-      		<a class="dropdown-item" href="#">가게 등록신청</a>
-      		<a class="dropdown-item" href="#">가게 정보조회</a>
-      		<a class="dropdown-item" href="#">가게 정보수정</a>
-      		<a class="dropdown-item" href="#">가게 철수신청</a>
+      		<a class="dropdown-item" href="/owner/ownerShopRegister">가게 등록신청</a>
+      		<a class="dropdown-item" href="/owner/ownerShopList">가게 정보조회</a>
+      		<a class="dropdown-item" href="/owner/ownerShopList">가게 정보수정</a>
+      		<a class="dropdown-item" href="/owner/ownerShopDrop">가게 철수신청</a>
       	</div>
       </li>
+      <li class="nav-item">
+	        <a class="nav-link" href="/owner/ownerWaitShopSelect">대기관리</a>
+	  </li>
     </ul>
     </c:if>
     <c:if test="${authorities eq 'ROLE_ADMIN'}">

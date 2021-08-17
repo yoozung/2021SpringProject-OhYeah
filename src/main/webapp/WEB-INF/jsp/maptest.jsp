@@ -57,6 +57,8 @@ var marker = new naver.maps.Marker({
 
 
 var mapOptions = {
+		center: new naver.maps.LatLng(37.50430770968853, 127.02512292912671), //Initial location
+		zoom: 15,
         zoomControl: true,
         scaleControl: false,
         mapDataControl: false,
@@ -67,6 +69,11 @@ var mapOptions = {
     };
 
 var map = new naver.maps.Map('map',mapOptions);
+var marker = new naver.maps.Marker({
+    position: new naver.maps.LatLng(37.50430770968853, 127.02512292912671),
+    map: map,
+    icon: {url: "/resource/img/SampleshopLocation.png"}
+});
 
 // 여러 markers 변수선언
 var markers = [];
@@ -209,7 +216,7 @@ function markerCluster(applyMarker)
 	    
 	 var markerClustering = new MarkerClustering({
 	        minClusterSize: 2,
-	        maxZoom: 8,
+	        maxZoom: 16,
 	        map: map,
 	        markers: applyMarker,
 	        disableClickZoom: false,

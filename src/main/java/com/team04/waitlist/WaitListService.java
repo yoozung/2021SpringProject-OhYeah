@@ -14,7 +14,11 @@ public class WaitListService implements WaitListDao {
 	@Autowired
 	private WaitListDao waitListDao;
 	
-	// 신청한 대기목록 조회
+	/**
+	 * <pre>
+	 * 사용자 회원을 위한 조회 메서드
+	 * </pre>
+	 */
 	@Override
 	public List<WaitListDto> selectMyWaitList(String username) {
 		return waitListDao.selectMyWaitList(username);
@@ -54,6 +58,17 @@ public class WaitListService implements WaitListDao {
 	@Override
 	public List<WaitListDto> selectAllWaitListPart(int startRow, int endRow) {
 		return waitListDao.selectAllWaitListPart(startRow, endRow);
+	}
+		
+	// 가게별 대기목록 
+	@Override
+	public List<WaitListDto> ownerWaitList(String shopNo) {
+		return waitListDao.ownerWaitList(shopNo);
+	}
+
+	@Override
+	public void call(String waitNo) {
+		waitListDao.call(waitNo);
 	}
 
 }

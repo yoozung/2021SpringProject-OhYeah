@@ -6,10 +6,12 @@ import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 @Mapper
-public interface WaitListDao {
+public interface WaitListDao {	
 	
+
 	@Select("SELECT * FROM waitlist WHERE waitname=#{username}")
 	public List<WaitListDto> selectMyWaitList(String username);
 	
@@ -24,4 +26,11 @@ public interface WaitListDao {
 
 	@Select("SELECT * FROM (SELECT ROWNUM NUM, M.* FROM member M) WHERE NUM BETWEEN #{startRow} AND #{endRow}")
 	public List<WaitListDto> selectAllWaitListPart(int startRow, int endRow);
+	
+	@Select("SELECT * FROM waitlist WHERE shopNo=#{shopNo}")
+	public List<WaitListDto> ownerWaitList(String shopNo);
+
+	@Update("UPDATE waitlist SET waitState = 'accept' WHERE waitNo = #{waitNo}")
+	public void call(String waitNo);
+	
 }
