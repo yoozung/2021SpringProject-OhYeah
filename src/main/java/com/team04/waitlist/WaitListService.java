@@ -33,4 +33,27 @@ public class WaitListService implements WaitListDao {
 		return waitListDao.deleteLine(waitNo);
 	}
 
+	/**
+	 * <pre>
+	 * 서비스 운영자를 위한 대기목록 전체 조회
+	 * </pre>
+	 * @return
+	 */
+	public List<WaitListDto> selectAllWaitList() {		
+		return waitListDao.selectAllWaitList();
+	}
+
+	/**
+	 * <pre>
+	 * 페이징 적용을 위한 대기목록 조회
+	 * </pre>
+	 * @param startRow
+	 * @param endRow
+	 * @return
+	 */
+	@Override
+	public List<WaitListDto> selectAllWaitListPart(int startRow, int endRow) {
+		return waitListDao.selectAllWaitListPart(startRow, endRow);
+	}
+
 }

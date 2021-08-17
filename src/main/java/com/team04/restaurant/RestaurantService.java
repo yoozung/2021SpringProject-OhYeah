@@ -27,13 +27,8 @@ public class RestaurantService implements RestaurantDao {
     @Override
     public RestaurantDto selectRestaurant(String shopNo) {
         return restaurantDao.selectRestaurant(shopNo);
-    }
-    
-    /** 관리자식당조회 */
-    @Override
-    public List<RestaurantDto> selectShopList() {
-        return restaurantDao.selectShopList();
-    }
+    }    
+   
     /** 사업자식당조회 */
     @Override
     public List<RestaurantDto> ownerShopList(String memberNo) {
@@ -63,5 +58,16 @@ public class RestaurantService implements RestaurantDao {
 //  public RestaurantDto ownerShopUpdate(String shopNo) {
 //      return restaurantDao.ownerShopUpdate(shopNo);
 //  }
+    
+    /** 관리자식당조회 */
+    @Override
+    public List<RestaurantDto> selectShopList() {
+        return restaurantDao.selectShopList();
+    }
+    
+    @Override
+    public List<RestaurantDto> selectShopListPart(int startRow, int endRow) {
+    	return restaurantDao.selectShopListPart(startRow, endRow);
+    }
     
 }

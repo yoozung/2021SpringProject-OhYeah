@@ -8,47 +8,20 @@
 </head>
 <body>
 <%@ include file="../Fragment/inc/topBefore.jsp" %>
-<!-- start middle menu-->
-	<div class="container admin">
-		<div class="row middleMenu">
-			<div class="row col-12">
-				<div class="row col-8 tab_bar">
-					<div class="col-6 asd1 tab_line">
-						<div class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">SHOP MANAGE</div>
-						<div class="dropdown-menu">
-							<a class="dropdown-item" href="/admin/adminShopAccept">등록신청관리</a>
-							<a class="dropdown-item" href="/admin/adminShopList">식당조회</a>
-							<a class="dropdown-item" href="/admin/adminShopUpdate">수정관리</a>
-							<a class="dropdown-item" href="/admin/adminShopDrop">삭제관리</a>
-						</div>
-					</div>
-					<div class="col-6 asd2 tab_line">
-						<div class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">MEMBER MANAGE</div>
-						<div class="dropdown-menu">
-							<a class="dropdown-item" href="/admin/adminMemberList">회원조회</a>
-							<a class="dropdown-item" href="/admin/adminMemberDrop">회원삭제</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-<!-- end middle menu-->
 <div class="container adminShopList">
-<div class="condition">
-	<form action="/admin/condition" method="get">
-		<select name="status">
-			<option value="apply">등록심사대기</option>
-			<option value="accept">등록</option>
-			<option value="reject">등록거절</option>
-		</select>
-		<input type="submit" value="조회">
-	</form>
-</div>
-
 <%@ include file="multipleCondition.jsp" %>
 <h4>All Shop List</h4>
-<table>
+<c:if test="${count > 0}">
+   <c:set var="pageCount" value="${count / pageSize + ( count % pageSize == 0 ? 0 : 1)}"/>
+   <c:set var="startPage" value="${pageGroupSize*(numPageGroup-1)+1}"/>
+   <c:set var="endPage" value="${startPage + pageGroupSize-1}"/>
+   
+   <c:if test="${endPage > pageCount}" >
+     <c:set var="endPage" value="${pageCount}" />
+   </c:if>
+   
+<table class="table">
+	<thead>
 	<tr>
 		<th>번호</th>
 		<th>가게번호</th>
@@ -61,14 +34,9 @@
 		<th>좌석수</th>
 		<th>등록일</th>
 	</tr>
-	
-	<!-- 검색조건에 해당하는 결과가 없는 경우 메세지 출력 -->
-	<c:if test="${not empty message}">
-		<tr>
-			<th colspan=10>${message}</th>
-		</tr>
-	</c:if>
-	<c:forEach var="dto" items="${list}" varStatus="status">
+	</thead>
+	<tbody>
+	<c:forEach var="dto" items="${Table}" varStatus="status">
 		<tr>
 			<th>${status.count}</th>
 			<th>${dto.shopNo}</th>
@@ -82,7 +50,34 @@
 			<th>${dto.registerDate}</th>
 		</tr>
 	</c:forEach>
+	</tbody>
 </table>
+<!-- << 처음으로 < 이전으로 -->  
+   <c:if test="${numPageGroup > 1}">
+        <a href="./admin/adminShopList?pageNum=1">[<<]</a>
+        <a href="./admin/adminShopList?pageNum=${(numPageGroup-2)*pageGroupSize+1 }">[<]</a>
+   </c:if> 
+   
+  <c:forEach var="i" begin="${startPage}" end="${endPage}">
+       <a href="/admin/adminShopList?pageNum=${i}">[       
+          <c:if test="${currentPage == i}">
+        </c:if>
+        ${i}
+       </a>
+  </c:forEach>
+ 
+ 
+ <!-- 소수점 형태이므로 인트형태로 변경  --> 
+   <fmt:parseNumber var="maxPage"  value="${pageCount}" /> 
+ 
+<!-- >> 맨뒤로 > 다음으로 -->
+   <c:if test="${numPageGroup < pageGroupCount}">
+      <a href="./admin/adminShopList?pageNum=${numPageGroup*pageGroupSize+1}">[>]</a>
+        
+      <a href="./admin/adminShopList?pageNum=${maxPage}">[>>]</a>
+  
+   </c:if>
+</c:if>
 </div>
 <%@ include file="../Fragment/inc/footer.jsp"%>
 </body>

@@ -19,8 +19,7 @@ public class MemberService implements MemberDao {
 	@Override
 	public int signUp(String memberNo, String name, String mobile, String email, String password, String entryDate, String role, int enabled) {
 		return memberDao.signUp(memberNo, name, mobile, email, password, entryDate, role, enabled);
-	}
-	
+	}	
 		
 	@Override
 	public MemberDto signIn(String username, String password) {
@@ -33,14 +32,14 @@ public class MemberService implements MemberDao {
 	}	
 
 	@Override
-	public List<MemberDto> selectMemberList() {
+	public List<MemberDto> adminSelectMemberList() {
 		log.debug("#### 서비스테스트");
-		return memberDao.selectMemberList();
+		return memberDao.adminSelectMemberList();
 	}
 
 	@Override
-	public MemberDto findByName(String username) {
-		return null;
+	public List<MemberDto> adminSelectMemberListPart(int startRow, int endRow) {
+		return memberDao.adminSelectMemberListPart(startRow, endRow);
 	}
 
 }

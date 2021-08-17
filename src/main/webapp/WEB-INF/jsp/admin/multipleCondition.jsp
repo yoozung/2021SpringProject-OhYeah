@@ -1,9 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../Fragment/TagLib/Taglib.jsp" %>
     
 <!-- 다중조건검색 조각페이지 : inc/multipleCondition.jsp -->
-<div class="multipleCondition">
+<div class="input multipleCondition">
 	<form action="/admin/multipleCondition" method="get">
 		<select name="condition">
 			<option value="shopName">가게명</option>

@@ -22,5 +22,6 @@ public class AdminService {
 //	public List<MemberDto> memberList() {
 //		return memberDao.selectMemberList();
 //	}
-//	
+
+	
 }

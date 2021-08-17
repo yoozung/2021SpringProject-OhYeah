@@ -16,13 +16,15 @@ public interface MemberDao {
 	@Select("SELECT * FROM member WHERE email=#{username} AND password=#{password}")
 	public MemberDto signIn(String username, String password);
 	
-	@Select("SELECT * FROM member WHERE name=#{username}")
-	public MemberDto findByName(String username);	
 
 	@Select("SELECT * FROM member WHERE email=#{email}")
 	public MemberDto findByEmail(String email);
 	
 	/** 전체회원조회 */
-	public List<MemberDto> selectMemberList();
+	@Select("SELECT * FROM member")
+	public List<MemberDto> adminSelectMemberList();
+	
+	@Select("SELECT * FROM (SELECT ROWNUM NUM, M.* FROM member M) WHERE NUM BETWEEN #{startRow} AND #{endRow}")
+	public List<MemberDto> adminSelectMemberListPart(int startRow, int endRow);
 	
 }

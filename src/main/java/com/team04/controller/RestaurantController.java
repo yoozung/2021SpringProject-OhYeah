@@ -51,15 +51,7 @@ public class RestaurantController {
 		log.debug("#### 컨트롤러리턴테스트");
 		return "/maptest";
 	}
-	
-	/** 전체식당조회 */
-    @RequestMapping("/admin/adminShopList")
-    public String adminShopList(Model model) {
-        List<RestaurantDto> list = restaurantService.selectShopList();
-        model.addAttribute("list", list);
-        return "admin/adminShopList";
-    }
-    
+	    
 //  /** 등록된식당조회 */
 //  @RequestMapping("/admin/adminShopList")
 //  public String adminShopList(String status, Model model) {

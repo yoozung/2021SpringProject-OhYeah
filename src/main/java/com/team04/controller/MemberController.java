@@ -90,12 +90,21 @@ public class MemberController {
 //			return "redirect:/signUpPage";
 		}
 	}
-
+	
 	@GetMapping("/signInPage")
 	public String callSignInPage() {
 		return "/SignIn/signInPage";
 	}
-
+	/**
+	 * 
+	 * @param account
+	 * @param password
+	 * @param req
+	 * @param res
+	 * @param session
+	 * @throws IOException
+	 * @author gruzam0615
+	 */
 	@PostMapping("/signInPage/SignIn")
 	public void singInMethod(@RequestParam("account")String account, @RequestParam("password")String password,
 			HttpServletRequest req, HttpServletResponse res, HttpSession session) throws IOException {
@@ -195,31 +204,7 @@ public class MemberController {
 		return "";
 	}
 	
-	/**
-	 * 관리자 회원 목록 조회
-	 * @param model
-	 * @return adminMemberList.jsp
-	 */
-	@RequestMapping("/admin/adminMemberList")
-	public String adminMemberList(Model model) {
-		List<MemberDto> list = memberService.selectMemberList();
-		model.addAttribute("list", list);
-		return "admin/adminMemberList";
-	}
-	
-	/**
-	 * 관리자 회원 삭제 화면
-	 * @param model
-	 * @return adminMemberDrop.jsp
-	 */
-	@RequestMapping("/admin/adminMemberDrop")
-	public String adminMemberDrop(Model model) {
-		List<MemberDto> list = memberService.selectMemberList();
-		log.debug("#### 컨트롤러테스트");
-		model.addAttribute("list", list);
-		return "admin/adminMemberDrop";
-	}
-	
+		
 	/**
 	 * 관리자 회원 삭제 구동
 	 * @param model

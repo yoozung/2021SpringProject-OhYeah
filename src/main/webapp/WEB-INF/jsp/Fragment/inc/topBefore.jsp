@@ -54,6 +54,20 @@
       </li>
     </ul>
     </c:if>
+    <c:if test="${authorities eq 'ROLE_ADMIN'}">
+    <ul class="navbar-nav menu-nav">     
+       <li class="nav-item dropdown">
+      	<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      		관리
+      	</a>
+      	<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+      		<a class="dropdown-item" href="/admin/adminMemberList">회원 정보조회</a>
+      		<a class="dropdown-item" href="/admin/adminShopList">가게 정보조회</a>
+      		<a class="dropdown-item" href="#">줄서기 정보조회</a>
+      	</div>
+      </li>
+    </ul>
+    </c:if>
     <c:if test="${authorities eq null}">    
     <ul class="navbar-nav member-nav">
 		<li class="nav-item">

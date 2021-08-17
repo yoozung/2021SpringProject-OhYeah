@@ -43,19 +43,19 @@ body {
 }
 
 .carousel-item {
-    height: 500px !important;
+    height: 550px !important;
 }
 
 .mainSector1 {
 	padding: 0;
     width: 80%;
-    height: 500px;
+    height: 550px;
     background-color: cadetblue;
 }
 
 .mainSectorM1 {
     width: 80%;
-    height: 100px;
+    height: 130px;
 }
 
 .mainSector2 {

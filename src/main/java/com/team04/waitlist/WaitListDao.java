@@ -18,4 +18,10 @@ public interface WaitListDao {
 
 	@Delete("DELETE FROM waitlist WHERE waitno=#{waitNo}")
 	public boolean deleteLine(String waitNo);
+
+	@Select("SELECT * FROM waitlist")
+	public List<WaitListDto> selectAllWaitList();
+
+	@Select("SELECT * FROM (SELECT ROWNUM NUM, M.* FROM member M) WHERE NUM BETWEEN #{startRow} AND #{endRow}")
+	public List<WaitListDto> selectAllWaitListPart(int startRow, int endRow);
 }
