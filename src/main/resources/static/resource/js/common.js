@@ -16,3 +16,12 @@ function map()
 	location.href = '/test1115';
 }
 */
+
+
+function movemap(){
+	location.href = '/map/mapFormList';
+}
+
+function movejoin(){
+	location.href = '/signUpPage';
+}
