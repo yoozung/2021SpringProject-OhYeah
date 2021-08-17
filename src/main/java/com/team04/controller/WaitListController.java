@@ -17,8 +17,12 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.team04.member.MemberDto;
+import com.team04.restaurant.RestaurantDto;
+import com.team04.restaurant.RestaurantService;
 import com.team04.waitlist.WaitListDto;
 import com.team04.waitlist.WaitListService;
 
@@ -30,6 +34,9 @@ public class WaitListController {
 	
 	@Autowired
 	private WaitListService waitListService;
+	
+	@Autowired
+	private RestaurantService restaurantService;
 	
 	@GetMapping("/waitList/getLineForm")
 	public String getLineForm(HttpServletRequest req, HttpServletResponse res) throws IOException {
@@ -105,5 +112,39 @@ public class WaitListController {
 		log.debug(">>>> " + "test03");
 	}
 	
-	
+	/** 사업자: 대기관리할 식당선택 목록보여주기 (정상작동됨) */
+    @RequestMapping("/owner/ownerWaitShopSelect")
+    public String ownerShopWait(Model model, HttpSession session)  {
+        MemberDto member =  (MemberDto) session.getAttribute("member");
+        
+        log.debug("#### 식당선택 컨트롤러");
+        List<RestaurantDto> list = restaurantService.ownerShopList(member.getMemberNo());
+        System.out.println(list);
+        model.addAttribute("list", list);
+        
+        log.debug("#### 식당선택 컨트롤러리턴");
+        return "/owner/ownerWaitShopSelect";
+    }
+    
+    /** 사업자: 대기관리 식당샵번호 선택하면 대기관리화면으로 넘겨 (정상작동됨) */
+    @GetMapping("/ownerWaitList")
+    public String ownerWaitList(Model model, @RequestParam("shopNo")String shopNo) {
+    	model.addAttribute("shopNo", shopNo);
+    	 List<WaitListDto> list = waitListService.ownerWaitList(shopNo);
+    	 log.debug("#### 중간 컨트롤러확인");
+    	 model.addAttribute("list", list);
+    	 log.debug("#### 샵번호에따른 정보 리스트담김");
+    	return "/owner/ownerWaitList";
+    }
+    
+    /** 사업자: 대기열에서 손님 호출 */
+    @GetMapping("/call")
+    public String call(Model model, @RequestParam("waitNo")String waitNo) {
+    	model.addAttribute("waitNo", waitNo);
+    
+    	waitListService.call(waitNo);
+    	log.debug("#### 대기번호넘어갓나");
+    	return "/main";
+    }
+    
 }

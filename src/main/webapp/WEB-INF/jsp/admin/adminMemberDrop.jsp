@@ -8,6 +8,24 @@
 <title>관리자 | 회원삭제</title>
 <link type="text/css" rel="stylesheet" href="/resource/css/inc.css">
 <link type="text/css" rel="stylesheet" href="/resource/css/adminPage.css">
+<script>
+function checkboxArr() {
+    var checkArr = [];     // 배열 초기화
+    $("input[name='test_check']:checked").each(function(i)) {
+        checkArr.push($(this).val());     // 체크된 것만 값을 뽑아서 배열에 push
+    }
+ 
+    $.ajax({
+        url: 'test_check'
+        , type: 'post'
+        , dataType: 'text'
+        , data: {
+            valueArrTest: checkArr
+        }
+    });
+}
+</script>
+
 
 </head>
 <body>
@@ -41,7 +59,7 @@
 <div class="container adminMemberDrop">
 <h4>Member Drop</h4>
 
-<form action="/memberDrop" method="post" name="selectForm" id="selectForm">
+<form action="/memberDrop" method="post">
 <input type="submit" value="전체선택" id="btn-all" onclick="checkAll()">
 <input type="reset" value="전체취소" id="btn-all" onclick="clearAll()">
 <table>
@@ -71,14 +89,14 @@
 			</th>
 			<th>${dto.mobile}</th>
 			<th>${dto.entryDate}</th>
-			<th><input type="checkbox" id="email" value="${dto.email}">${dto.email}</th>
+			<th><input type="checkbox" name="test_check" value="email"></th>
 		</tr>
 	</c:forEach>
 </table>
 
 
-<input type="button" value="회원삭제" id="btn" />
-<input type="reset" value="취소"  id="btn" class="choose" onclick="" />
+<<input type="submit" value="회원삭제" id="btn" />
+<input type="reset" value="취소"  id="btn" />
 </form>
 </div>
 <%@ include file="../Fragment/inc/footer.jsp"%>

@@ -33,4 +33,16 @@ public class WaitListService implements WaitListDao {
 		return waitListDao.deleteLine(waitNo);
 	}
 
+	// 가게별 대기목록 
+	@Override
+	public List<WaitListDto> ownerWaitList(String shopNo) {
+		return waitListDao.ownerWaitList(shopNo);
+	}
+
+	@Override
+	public void call(String waitNo) {
+		waitListDao.call(waitNo);
+		
+	}
+
 }
