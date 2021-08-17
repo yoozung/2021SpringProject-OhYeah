@@ -7,7 +7,7 @@
     <!-- Links -->
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a href="/main"><img class="nav-logo" src="/resource/img/main/logo.png" /></a>
+        <a href="/main"><img class="nav-logo" src="/resource/img/main/logo3.png" /></a>
       </li>
     </ul>
     <c:if test="${authorities eq null}">
@@ -48,27 +48,13 @@
       	<div class="dropdown-menu" aria-labelledby="navbarDropdown">
       		<a class="dropdown-item" href="/owner/ownerShopRegister">가게 등록신청</a>
       		<a class="dropdown-item" href="/owner/ownerShopList">가게 정보조회</a>
-      		<a class="dropdown-item" href="/owner/ownerShopList">가게 정보수정</a>
+      		<a class="dropdown-item" href="/owner/ownerShopUpdate">가게 정보수정</a>
       		<a class="dropdown-item" href="/owner/ownerShopDrop">가게 철수신청</a>
       	</div>
       </li>
-      <li class="nav-item">
+	  <li class="nav-item">
 	        <a class="nav-link" href="/owner/ownerWaitShopSelect">대기관리</a>
-	  </li>
-    </ul>
-    </c:if>
-    <c:if test="${authorities eq 'ROLE_ADMIN'}">
-    <ul class="navbar-nav menu-nav">     
-       <li class="nav-item dropdown">
-      	<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      		관리
-      	</a>
-      	<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-      		<a class="dropdown-item" href="/admin/adminMemberList">회원 정보조회</a>
-      		<a class="dropdown-item" href="/admin/adminShopList">가게 정보조회</a>
-      		<a class="dropdown-item" href="#">줄서기 정보조회</a>
-      	</div>
-      </li>
+	  </li>   
     </ul>
     </c:if>
     <c:if test="${authorities eq null}">    

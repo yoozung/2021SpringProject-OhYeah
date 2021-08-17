@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+
 body {
     width: 100%;
     margin: 0;
@@ -16,8 +17,10 @@ body {
 }
 
 .nav-logo {
-    width: 92px;
-    height: 40px;
+    width: 79px;
+    height: 49px;
+    margin-left: 20px;
+    margin-top: 5px;
 }
 
 .nav-link {
@@ -43,19 +46,19 @@ body {
 }
 
 .carousel-item {
-    height: 550px !important;
+    height: 500px !important;
 }
 
 .mainSector1 {
 	padding: 0;
     width: 80%;
-    height: 550px;
+    height: 500px;
     background-color: cadetblue;
 }
 
 .mainSectorM1 {
     width: 80%;
-    height: 130px;
+    height: 100px;
 }
 
 .mainSector2 {
