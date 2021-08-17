@@ -1,8 +1,10 @@
 package com.team04.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,17 +31,59 @@ public class RestaurantController {
 	}
 	
 	@RequestMapping("/restaurant/shopList")
-	public String shopList(Model model, HttpSession session) {
-		// 요청에 대한 사용자 인증 및 권한 체킹 부분이 누락
-		// 인증여부 체크
-		if(session.getAttribute("shopNo") == null || session.getAttribute("dto") == null) {
-			model.addAttribute("message", "로그인 인증 후 이용하시기 바랍니다.");
-			return "/Restaurant/shopList";
-		}		
-		List<RestaurantDto> list = restaurantService.selectRestaurantList();
-		log.info("RestaurantList: " + list.size());
-		model.addAttribute("list", list);
-		return "shopList";
+	public String shopList(HttpServletRequest req, Model model) {
+		// 한 페이지 당 보여줄 수
+				final int pageSize = 10;
+				// 페이지 수
+				final int pageGroupSize = 10;
+
+				String pageNum = req.getParameter("pageNum");// 페이지 번호
+
+				if (pageNum == null) {
+					pageNum = "1";
+				}
+
+				int currentPage = Integer.parseInt(pageNum);
+				int startRow = (currentPage - 1) * pageSize + 1;// 한 페이지의 시작글 번호
+				int endRow = currentPage * pageSize;// 한 페이지의 마지막 글번호
+				int count;
+
+				int number = 0;
+
+				// 테이블
+				List<RestaurantDto> Table = new ArrayList();
+				count = restaurantService.selectShopList().size();// 전체 글의 수
+
+				if (count > 0) {
+					if (endRow > count)
+						endRow = count;
+					Table = restaurantService.selectShopListPart(startRow, endRow); // 현재 페이지에 해당하는 글 목록
+
+				} else {
+					Table = null;
+				}
+
+				number = count - (currentPage - 1) * pageSize;// 글목록에 표시할 글번호
+				// 페이지그룹의 갯수
+				// ex) pageGroupSize가 3일 경우 '[1][2][3]'가 pageGroupCount 개 만큼 있다.
+				int pageGroupCount = count / (pageSize * pageGroupSize) + (count % (pageSize * pageGroupSize) == 0 ? 0 : 1);
+				// 페이지 그룹 번호
+				// ex) pageGroupSize가 3일 경우 '[1][2][3]'의 페이지그룹번호는 1 이고 '[2][3][4]'의 페이지그룹번호는 2
+				// 이다.
+				int numPageGroup = (int) Math.ceil((double) currentPage / pageGroupSize);
+
+				// 해당 뷰에서 사용할 속성
+				req.setAttribute("currentPage", new Integer(currentPage));
+				req.setAttribute("startRow", new Integer(startRow));
+				req.setAttribute("endRow", new Integer(endRow));
+				req.setAttribute("count", new Integer(count));
+				req.setAttribute("pageSize", new Integer(pageSize));
+				req.setAttribute("number", new Integer(number));
+				req.setAttribute("pageGroupSize", new Integer(pageGroupSize));
+				req.setAttribute("numPageGroup", new Integer(numPageGroup));
+				req.setAttribute("pageGroupCount", new Integer(pageGroupCount));
+				req.setAttribute("Table", Table);
+				return "shop/shopList";
 	}
 	
 	@RequestMapping("/map/mapFormList")

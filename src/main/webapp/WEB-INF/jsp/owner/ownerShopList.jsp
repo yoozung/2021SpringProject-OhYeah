@@ -5,9 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <link type="text/css" rel="stylesheet" href="/resource/css/inc.css">
-<title>사업자 | 식당등록</title>
+<title>사업자 | 식당목록</title>
 </head> 
 <body>
+<%@ include file="../Fragment/inc/topBefore.jsp" %>
 <div class="container">
 	<h4>가게목록조회</h4>
 	<table>
