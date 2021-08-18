@@ -5,7 +5,20 @@
 <head>
 <meta charset="UTF-8">
 <link type="text/css" rel="stylesheet" href="/resource/css/inc.css">
+<style type="text/css">
+table {
+    width: 100%;
+    border-top: 1px solid #444444;
+    border-collapse: collapse;
+  }
 
+  th, td {
+    border-bottom: 1px solid #444444;
+    padding: 10px;
+  }
+  
+tr:hover { background-color: #eeeeff; cursor: pointer; }
+</style>
 </head>
 <body>
 <%@ include file="../Fragment/inc/topBefore.jsp" %>

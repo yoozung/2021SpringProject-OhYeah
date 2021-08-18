@@ -25,3 +25,4 @@ function movemap(){
 function movejoin(){
 	location.href = '/signUpPage';
 }
+

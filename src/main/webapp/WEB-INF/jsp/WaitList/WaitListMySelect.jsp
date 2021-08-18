@@ -9,6 +9,20 @@
 <link type="text/css" rel="stylesheet" href="/resource/css/WaitList/WaitListMySelect.css">
 <link type="text/css" rel="stylesheet"
 	href="/resource/css/adminPage.css">
+	<style type="text/css">
+table {
+    width: 100%;
+    border-top: 1px solid #444444;
+    border-collapse: collapse;
+  }
+
+  th, td {
+    border-bottom: 1px solid #444444;
+    padding: 10px;
+  }
+  
+tr:hover { background-color: #eeeeff; cursor: pointer; }
+</style>
 </head>
 <c:set var="userName" value="${member.getName()}"/>
 <c:set var="authorities" value="${member.getRole()}"/>

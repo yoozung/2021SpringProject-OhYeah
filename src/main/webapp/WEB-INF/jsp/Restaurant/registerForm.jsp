@@ -8,7 +8,6 @@
 <title>등록신청페이지</title>
 </head>
 <body>
-<%@ include file="../Fragment/TopNav/topNav.jsp" %>
 <form action="/regiForm" method="POST">
 <label for="shopName">매장명</label>
 <input type="text" name="shopName" value=""/>

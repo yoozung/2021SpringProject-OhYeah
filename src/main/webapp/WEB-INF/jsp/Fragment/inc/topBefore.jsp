@@ -57,6 +57,33 @@
 	  </li>   
     </ul>
     </c:if>
+
+
+    <c:if test="${authorities eq 'ROLE_ADMIN'}">
+    <ul class="navbar-nav menu-nav">     
+       <li class="nav-item dropdown">
+      	<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      		가게 관리
+      	</a>
+      	<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+      		<a class="dropdown-item" href="/admin/adminShopList">전체 가게 조회</a>
+      		<a class="dropdown-item" href="/owner/ownerShopDrop">가게 철수</a>
+      	</div>
+      </li>
+       <li class="nav-item dropdown">
+      	<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      		회원 관리
+      	</a>
+      	<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+      		<a class="dropdown-item" href="/admin/adminMemberList">회원 조회</a>
+      		<a class="dropdown-item" href="/owner/ownerShopDrop">회원 삭제</a>
+      	</div>
+      </li>
+	   <li class="nav-item">
+	        <a class="nav-link" href="/admin/adminWaitList">대기현황</a>
+	  </li>
+    </ul>
+    </c:if>
     <c:if test="${authorities eq null}">    
     <ul class="navbar-nav member-nav">
 		<li class="nav-item">

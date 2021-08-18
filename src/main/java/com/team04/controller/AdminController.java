@@ -215,7 +215,7 @@ public class AdminController {
 		req.setAttribute("numPageGroup", new Integer(numPageGroup));
 		req.setAttribute("pageGroupCount", new Integer(pageGroupCount));
 		req.setAttribute("Table", Table);
-
+		log.debug(">>>> 관리자 대기목록 값넘어오는거확인" + Table);
 		return "admin/adminWaitList";
 	}
 

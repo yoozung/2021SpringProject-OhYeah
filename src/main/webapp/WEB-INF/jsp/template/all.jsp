@@ -15,6 +15,12 @@
 	<c:if test="${authorities eq 'ROLE_CONSUMER'}">
 	<%@ include file="../Fragment/inc/carousel.jsp" %>
 	</c:if>
+	<c:if test="${authorities eq 'ROLE_ADMIN'}">
+	<%@ include file="../Fragment/inc/carousel.jsp" %>
+	</c:if>
+	<c:if test="${authorities eq 'ROLE_OWNER'}">
+	<%@ include file="../Fragment/inc/carousel.jsp" %>
+	</c:if>
 	<c:if test="${authorities eq NULL}">
 	<%@ include file="../Fragment/inc/carousel.jsp" %>
 	</c:if>
@@ -23,6 +29,12 @@
 </div>
 <div class="container-fluid mainSector2">
 	<c:if test="${authorities eq 'ROLE_CONSUMER'}">
+	<%@ include file="../Fragment/inc/mainSector2.jsp" %>
+	</c:if>
+	<c:if test="${authorities eq 'ROLE_ADMIN'}">
+	<%@ include file="../Fragment/inc/mainSector2.jsp" %>
+	</c:if>
+	<c:if test="${authorities eq 'ROLE_OWNER'}">
 	<%@ include file="../Fragment/inc/mainSector2.jsp" %>
 	</c:if>
 	<c:if test="${authorities eq NULL}">

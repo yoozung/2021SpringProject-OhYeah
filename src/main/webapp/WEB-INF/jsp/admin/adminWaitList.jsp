@@ -11,7 +11,7 @@
 <div class="container adminWaitList">
 <%@ include file="multipleCondition.jsp" %>
 <h4>All Shop List</h4>
-<<c:set var="pageCount" value="${count / pageSize + ( count % pageSize == 0 ? 0 : 1)}"/>
+<c:set var="pageCount" value="${count / pageSize + ( count % pageSize == 0 ? 0 : 1)}"/>
    <c:set var="startPage" value="${pageGroupSize*(numPageGroup-1)+1}"/>
    <c:set var="endPage" value="${startPage + pageGroupSize-1}"/>
    
@@ -33,7 +33,7 @@
 	</tr>
 	</thead>
 	<tbody>	
-	<c:forEach var="dto" items="${Table}" varStatus="status">
+	<!--<c:forEach var="dto" items="${Table}" varStatus="status">
 		<tr>
 			<th>${dto.waitNo}</th>
 			<th>${dto.waitName}</th>
@@ -44,10 +44,12 @@
 			<th>${dto.waitDate}</th>
 			<th>${dto.watiStatus}</th>
 		</tr>	
-	</c:forEach>
+		 <input type="button" onclick="c()" value="click"> 
+	</c:forEach>-->
+	
 	</tbody>
    </table>
- 
+
 <!-- << 처음으로 < 이전으로 -->  
    <c:if test="${numPageGroup > 1}">
         <a href="./admin/adminWaitList?pageNum=1">[<<]</a>
@@ -77,4 +79,21 @@
 <%@ include file="../Fragment/inc/footer.jsp"%>
 </body>
 <script type="text/javascript" src="/resource/js/common.js"></script>
+<script type="text/javascript">
+function c() {
+	<c:forEach var="item" items="${list}">
+		<tr>
+			<th>${item.waitNo}</th>
+			<th>${item.waitName}</th>
+			<th>${item.headCount}</th>
+			<th>${item.waitMobile}</th>
+			<th>${item.shopName}</th>
+			<th>${item.shopNo}</th>
+			<th>${item.waitDate}</th>
+			<th>${item.watiStatus}</th>
+		</tr>	
+	</c:forEach>
+	console.log(item);
+}
+</script>
 </html>

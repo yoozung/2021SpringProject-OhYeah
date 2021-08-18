@@ -6,6 +6,20 @@
 <meta charset="UTF-8">
 <link type="text/css" rel="stylesheet" href="/resource/css/inc.css">
 <title>사업자 | 식당목록</title>
+<style type="text/css">
+table {
+    width: 100%;
+    border-top: 1px solid #444444;
+    border-collapse: collapse;
+  }
+
+  th, td {
+    border-bottom: 1px solid #444444;
+    padding: 10px;
+  }
+  
+tr:hover { background-color: #eeeeff; cursor: pointer; }
+</style>
 </head> 
 <body>
 <%@ include file="../Fragment/inc/topBefore.jsp" %>
@@ -28,7 +42,7 @@
 			<th>${status.count}</th>
 			<th>${dto.MEMBERNO}</th>
 			<th>${dto.SHOPNO}</th>
-			<th><a href="ownerShopUpdate?ShopName=${dto.SHOPNAME}">${dto.SHOPNAME}</a></th>
+			<th>${dto.SHOPNAME}</th>
 			<th>${dto.SHOPMOBILE}</th>
 			<th>${dto.SHOPCATEGORY}</th>
 			<th>${dto.SHOPSITE}</th>

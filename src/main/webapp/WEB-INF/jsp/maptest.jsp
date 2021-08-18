@@ -45,21 +45,10 @@
 <script>
 var curtBtn ='<img src="/resource/img/CurrentLocationButton.png" alt="현재위치로 이동">';
 var curtLocation = "";
-
-/**
-var CityHall = new naver.maps.LatLng(37.566465, 126.977924);
-var marker = new naver.maps.Marker({
-	position: CityHall,
-	map: map,
-	// icon: {url: "/resource/img/SampleshopLocation.png"}
-});
-**/
-
-
 var mapOptions = {
-		center: new naver.maps.LatLng(37.50430770968853, 127.02512292912671), //Initial location
-		zoom: 15,
-        zoomControl: true,
+		center: new naver.maps.LatLng(37.50430770968853, 127.02512292912671), //신논현역 좌표
+		zoom: 15,  // 줌 레벨 11 ~ 21
+		zoomControl: true,
         scaleControl: false,
         mapDataControl: false,
         zoomControlOptions: {
@@ -67,21 +56,20 @@ var mapOptions = {
             position: naver.maps.Position.TOP_RIGHT
         }
     };
-
 var map = new naver.maps.Map('map',mapOptions);
+
 var marker = new naver.maps.Marker({
     position: new naver.maps.LatLng(37.50430770968853, 127.02512292912671),
     map: map,
     icon: {url: "/resource/img/SampleshopLocation.png"}
 });
-
 // 여러 markers 변수선언
 var markers = [];
-
-
+var markerstates= [];
+var markerClustering = [];
 function sortingMapByShopState(state)
 {
-	console.log(state);
+	state = Number(state);
 	//할당된 Markers
 	var newMarkers = [];
 	for(var i=0; i < markers.length; i++)
@@ -102,7 +90,7 @@ function sortingMapByShopState(state)
 	{
 		for(var i=0; i < markers.length; i++)
 		{
-			if(state == markers[i].state)
+			if(state == markerstates[i])
 			{
 				markers[i].setMap(map);
 				newMarkers.push(markers[i]);
@@ -114,13 +102,12 @@ function sortingMapByShopState(state)
 		}
 	}
 	markerCluster(newMarkers);
-	map.setZoom(4);
+	map.setZoom(15);
 }
-
 function CustomMarker(lat, lng, shopNo, shopName, state, shopMobile, shopCategory) {
 	//심각성 : 1
 	var contents_html = "";
-	
+
 	//상태 : 혼잡 (빨강)
 	if(state == 3)
 	{
@@ -174,17 +161,16 @@ function CustomMarker(lat, lng, shopNo, shopName, state, shopMobile, shopCategor
 	});
 	return marker;
 }
-
 // Marker 찍기
 function loadShopMarker()
 {
 	<c:forEach var="item" items="${list}" varStatus="idx">
 	var marker = CustomMarker(${item.lat}, ${item.lng}, "${item.shopNo}", "${item.shopName}", ${item.state}, "${item.shopMobile}", "${item.shopCategory}");
-	markers.push(marker);
+	markers.push(marker); 
+	markerstates.push(${item.state});
 	 </c:forEach>
 	 return markers;
 }
-
 // MarkerCluster 
 function markerCluster(applyMarker) 
 {
@@ -213,8 +199,15 @@ function markerCluster(applyMarker)
 			size: N.Size(40, 40),
 			anchor: N.Point(20, 20)
 		};
+		
+		
+		if(markerClustering)
+		{
+			markerClustering.map = null;
+			markerClustering = null;
+		}
 	    
-	 var markerClustering = new MarkerClustering({
+	 	markerClustering = new MarkerClustering({
 	        minClusterSize: 2,
 	        maxZoom: 16,
 	        map: map,
@@ -226,25 +219,21 @@ function markerCluster(applyMarker)
 	        stylingFunction: function(clusterMarker, count) {
 	            $(clusterMarker.getElement()).find('div:first-child').text(count);
 	        }
-	    });	
+	    });
+	 	map.refresh();
 }
-
 $(document).ready(function(){
 	var tmpMarkers = loadShopMarker();
 	markerCluster(tmpMarkers);
 });
-
-
 function overshop(childID)
 {
 	$("#"+childID).show();
 }
-
 function outshop(childID)
 {
 	$("#"+childID).hide();
 }
-
 naver.maps.Event.once(map, 'init_stylemap', function(){
 	var customCtrl = new naver.maps.CustomControl(curtBtn,{
 		position: naver.maps.Position.LEFT_BOTTOM
@@ -262,7 +251,6 @@ naver.maps.Event.once(map, 'init_stylemap', function(){
 		}
 	});
 });
-
 var onSuccessGeolocation = function(position) {
 	curtLocation = new naver.maps.LatLng(position.coords.latitude, position.coords.longitude);
 	map.setCenter(curtLocation);
@@ -277,7 +265,6 @@ var onSuccessGeolocation = function(position) {
 	
 	
 }
-
 var onErrorGeolocation = function() {
 	
 	// 어떤 브라우저로 열렸는지 확인
@@ -290,16 +277,12 @@ var onErrorGeolocation = function() {
 		console.log("현재 위치를 가져오는 에러가 발생하였습니다.");
 	}
 }
-
 if (navigator.geolocation) {
 	navigator.geolocation.getCurrentPosition(onSuccessGeolocation, onErrorGeolocation);
 }
 else {
 	console.log("Geolocation Not supported Required");
 }
-
-
-
 naver.maps.Event.addListener(map, 'click', function(e){
 	// 제이쿼리 사용
 	// e 는 클릭시 넘어오는 이벤트 (네이밍은 원하는 대로 하셔도 됩니다)
@@ -321,7 +304,6 @@ naver.maps.Event.addListener(map, 'click', function(e){
 	//marker.setPosition(e.latlng);
 	//alert(e.coord.lat() + ', ' + e.coord.lng());
 });
-
 naver.maps.Event.addListener(marker, "click", function(e) {
     if (infowindow.getMap()) {
         infowindow.close();
