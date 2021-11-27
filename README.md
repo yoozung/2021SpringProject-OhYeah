@@ -41,10 +41,10 @@ com.team04.waitlist 패키지 아래에는 식당 대기와 관련된 기능에 
 [SRS](https://docs.google.com/spreadsheets/d/1ZG4hMNLIsA4QF6825t7WGt0zab87J6Ff/edit?usp=sharing&ouid=103603984830369786368&rtpof=true&sd=true)
 
 ## UsecaseDiagram
-[UsecaseDiagram]()
+[UsecaseDiagram](https://github.com/yoozung/2021SpringProject-OhYeah/wiki/UsecaseDiagram)
 
 ## DB Modeling
-[DB]()
+[DB](https://github.com/yoozung/2021SpringProject-OhYeah/wiki/DB-Modeling)
 
 ## Workflow
 [Workflow](https://github.com/yoozung/2021SpringProject-OhYeah/wiki/Workflow)
