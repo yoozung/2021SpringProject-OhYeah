@@ -20,25 +20,16 @@ com.team04.waitlist 패키지 아래에는 식당 대기와 관련된 기능에 
 |name|version|
 |------|---|
 |SpringBoot(Maven)|4.10.0|
-|SQL DEveloper|11.2.0.2.0|
-|Visual Studio Code||
+|SQL Developer|11.2.0.2.0|
 
 
 ### Java
 |name|version|
 |------|---|
 |SpringBoot(Maven)|4.10.0|
-|Spring Security||
 |JPA||
 |MySQL|8.0.21|
 |Mybatis|-|
-
-### Front
-|name|version|
-|------|---|
-|JavaScript||
-|JQuery||
-|Ajax|| 
 
 <br>
 
