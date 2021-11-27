@@ -38,7 +38,7 @@ com.team04.waitlist 패키지 아래에는 식당 대기와 관련된 기능에 
 
 
 ## SRS
-[SRS]()
+[SRS](https://docs.google.com/spreadsheets/d/1ZG4hMNLIsA4QF6825t7WGt0zab87J6Ff/edit?usp=sharing&ouid=103603984830369786368&rtpof=true&sd=true)
 
 ## UsecaseDiagram
 [UsecaseDiagram]()
