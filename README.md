@@ -45,3 +45,6 @@ com.team04.waitlist 패키지 아래에는 식당 대기와 관련된 기능에 
 
 ## DB Modeling
 [DB]()
+
+## Workflow
+[Workflow](https://github.com/yoozung/2021SpringProject-OhYeah/wiki/Workflow)
